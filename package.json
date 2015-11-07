@@ -2,7 +2,7 @@
   "name": "ra-goodjokes",
   "version": "1.0.0",
   "description": "Rede Alumni - Good Jokes Project Mate",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/PauloAguiar/ra-goodjokes",
   "devDependencies": {
     "bower": "^1.6.5"
+  },
+  "dependencies": {
+    "express": "^4.13.3"
   }
 }
