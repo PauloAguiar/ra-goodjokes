@@ -1,18 +1,18 @@
 var express = require('express');
-var app = express();
-var morgan = require('morgan')
+var database = require('./app/services/database.js');
 
-app.set('view engine', 'ejs');
-app.use(morgan('dev'))
-app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+var app = express();
+var port = 3000;
+
+database.connect();
+
+require('./config/express')(app);
 
 app.get('/', function (req, res) {
   res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
 });
+require('./config/routes')(app);
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+app.listen(port);
 
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+console.log('Example app listening at http://localhost:%s', port);
