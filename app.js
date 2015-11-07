@@ -7,7 +7,7 @@ app.use(morgan('dev'))
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.get('/', function (req, res) {
-  res.render('index', {'title': 'Good Jokes Mate'});
+  res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
 });
 
 var server = app.listen(3000, function () {
