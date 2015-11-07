@@ -1,3 +1,4 @@
+
 /**
  * Module dependencies.
  */
@@ -100,3 +101,13 @@ exports.logout = function (req, res) {
  */
 
 exports.session = login;
+
+/**
+ * Login
+ */
+
+function login (req, res) {
+  var redirectTo = req.session.returnTo ? req.session.returnTo : '/';
+  delete req.session.returnTo;
+  res.redirect(redirectTo);
+};
