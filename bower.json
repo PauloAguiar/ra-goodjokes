@@ -1,0 +1,25 @@
+{
+  "name": "ra-goodjokes",
+  "description": "Rede Alumni - Good Jokes Project Mate",
+  "main": "app.js",
+  "authors": [
+    "Joao Jardim Neto <jrdmnt@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/PauloAguiar/ra-goodjokes",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "jquery": "~2.1.4"
+  }
+}

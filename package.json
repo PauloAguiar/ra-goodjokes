@@ -21,7 +21,9 @@
     "nodemon": "^1.8.1"
   },
   "dependencies": {
+    "ejs": "^2.3.4",
     "express": "^4.13.3",
+    "mongoose": "^4.2.4",
     "morgan": "^1.6.1"
   }
 }
