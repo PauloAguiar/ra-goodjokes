@@ -1,0 +1,49 @@
+.small-question {
+    vertical-align:top;
+}
+
+.question-counters {
+    font-size: 17px;
+    font-weight: 300;
+    color: #777;
+    margin-bottom: 0px;
+}
+
+.question-counters-text {
+    font-size: 10px;
+}
+
+.votes {
+    float: left;
+    padding: 4px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.views {
+    float: left;
+    padding: 4px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.answers {
+    float: left;
+    padding: 4px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.counters {
+    float: left;
+    padding-right: 10px;
+}
+
+.summary {
+    width: 530px;
+    float: left;
+}
+
+.summary-text {
+    font-size: 14px;
+}
