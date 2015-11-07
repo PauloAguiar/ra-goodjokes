@@ -1,16 +1,14 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var questionSchema = new Schema({
+var answerSchema = new Schema({
 	_creator: {type:  Number, ref: 'User'},
-  	title: String,
+	upvotes: Number,
   	content: String,
-  	upvotes: Number,
   	created_at: Date,
   	updated_at: Date
 });
 
+var Answer = mongoose.model('Answer', answerSchema);
 
-var Question = mongoose.model('Question', questionSchema);
-
-module.exports = Question;
+module.exports = Answer;
