@@ -18,10 +18,10 @@ var config = require('../config.js');
 		return _gridFs;
 	};
 
-	function onConnected(callback) {
+	function onConnected() {
 		return function() {
 			console.log('Connected to database server at: ' + _url + '.');
-			return callback();
+			//return callback();
 		};
 	};
 
