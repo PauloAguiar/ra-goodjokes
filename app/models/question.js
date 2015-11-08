@@ -2,12 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var questionSchema = new Schema({
-	_creator: {type:  Number, ref: 'User'},
+	_creator: { type: Schema.Types.ObjectId, ref: 'User'},
+	_answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }],
+	_tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }],
+	_vestibular: { type: Schema.Types.ObjectId, ref: 'Vestibular' },
   	title: String,
   	content: String,
-  	upvotes: Number,
-  	created_at: Date,
-  	updated_at: Date
+  	votes: Number,
+  	created_at: { type: Date, default: Date.now },
+  	updated_at: { type: Date, default: Date.now }
 });
 
 

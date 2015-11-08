@@ -6,6 +6,7 @@ var userSchema = new Schema({
 	name: { type: String, required: true, unique: true },
 	username: { type: String, required: true, unique: true },
 	school: { type: String, default: '' },
+	rating: { type: Number, default: 0 },
 	professor: { type: Boolean, default: true },
 	created_at: { type: Date, default: Date.now },
 	updated_at: { type: Date, default: Date.now }
