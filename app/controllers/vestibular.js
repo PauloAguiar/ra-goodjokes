@@ -70,3 +70,10 @@ exports.recent = function (req, res) {
       res.json(results);
     });
 };
+
+exports.list = function (req, res) {
+    Vestibular.find({})
+    .exec(function (err, results) {
+      res.json(results);
+    });
+};

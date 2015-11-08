@@ -26,14 +26,16 @@ module.exports = function (app) {
 	app.delete('/answers/:answerId', answer.remove);
 	
 	//tag routes
-    app.get   ('/tags/:tagId', tag.show);
-	app.get   ('/tags',        tag.all);
-    app.get   ('/tags/recent', tag.recent); //most recent
-	app.post  ('/tags',        tag.save);
+	app.get   ('/tags/:tagId/getName', tag.getName)
+    app.get   ('/tags/:tagId', 		   tag.show);
+	app.get   ('/tags',        		   tag.all);
+    app.get   ('/tags/recent', 		   tag.recent); //most recent
+	app.post  ('/tags',        		   tag.save);
 
 	//vestibular routes
-    app.get   ('/vestibulars/recent', vestibular.recent);
-	app.post  ('/vestibulars', vestibular.save);
+    app.get   ('/vestibulars/recent',        vestibular.recent);
+    app.get   ('/vestibulars',               vestibular.list);
+	app.post  ('/vestibulars',               vestibular.save);
 	app.get   ('/vestibulars/:vestibularId', vestibular.show);
 
     app.get('/question_view', function (req, res) {
