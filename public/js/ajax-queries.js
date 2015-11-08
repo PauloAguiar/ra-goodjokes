@@ -1,5 +1,6 @@
 function GetListedQuestions(vest)
 {
+    console.log("here")
     return $.get('/questionsSample/' + vest.tag, function (data) {
         $('#content-view').empty();
         $('#tabs').show();
@@ -42,8 +43,7 @@ function GetQuestionForm() {
   });
 }
 
-function getListedTags(tagId)
-{
+function getListedTags(tagId) {
     return $.get('/tags/' + tagId, function (data) {
         if(data.length > 0)
         {

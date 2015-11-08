@@ -26,7 +26,7 @@ function getQuestions() {
     data.forEach(function(d)
     {
       var html = templates.question({'question': d});
-      $('#question-list').append(html);
+      $('#content-view').append(html);
       if (d.vest !== undefined) {
         document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
                 GetListedQuestions(d.vest);
