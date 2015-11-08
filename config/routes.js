@@ -25,9 +25,11 @@ module.exports = function (app) {
 	//app.delete('/answer/:answerId',             answer.delete);
 	
 	//tag routes
-	app.get   ('/tag/:tagName', tag.show);
+	app.post  ('/tags', tag.save);
+	app.get   ('/tags/:tagName', tag.show);
 
 	//vestibular routes
-	app.get   ('/vestibular/:vestibularName', vestibular.show);
+	app.post  ('/vestibulars', vestibular.save);
+	app.get   ('/vestibulars/:vestibularName', vestibular.show);
 
 }

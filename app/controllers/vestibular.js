@@ -22,6 +22,20 @@ exports.load = function (req, res, next, id) {
   });
 };
 
+exports.save = function (req, res) {
+  console.log(req.body);
+  var vestibular = new Vestibular(req.body);
+  vestibular.save(function (err) {
+    if (err) {
+      return res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
+    }
+    else {
+      res.status(404)        // HTTP status 404: NotFound
+        .send('Tudo OK!');
+    }
+  });
+};
+
 /**
  *  Show profile
  */
