@@ -87,67 +87,59 @@ body {
     padding-top: 10px;
 }
 
-.maix-box-container {
-    padding-top: 10px;
+.row.question-show{
+    border-top: 1px dotted #CCCCCE;
+    padding: 20px;
+    padding-top: 5px;
 }
 
-.main-box.no-header {
-    padding-top: 20px;
+#panel-question{
+    padding-top: 50px;
 }
 
-.main-box {
-    background: #FFFFFF;
-    -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
-    box-shadow: 1px 1px 2px 0 #CCCCCC;
-    margin-bottom: 0px;
-    -webikt-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+.container-fluid.panel-question-answer-line{
+   border-top: 1px dotted #CCCCCE;
+    padding: 20px;
+    padding-top: 5px;   
 }
 
-.table a.table-link.danger {
-    color: #e74c3c;
+
+.numberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    background: #fff;
+    border: 2px solid black;
+    color: black;
+    /*text-align: center;*/
+    font: 32px Arial, sans-serif;
+    display: inline-block;
 }
 
-.provas-list tbody td .user-subhead {
-    font-size: 0.875em;
-    font-style: italic;
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
 }
-
-.provas-list tbody td .user-link {
-    display: block;
-    font-size: 1.25em;
-    padding-top: 3px;
-    margin-left: 6px;
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
 }
-
-.provas-list tbody td>img {
-    position: relative;
-    max-width: 50px;
-    float: left;
-    margin-right: 15px;
-}
-
-.table thead tr th {
-    text-transform: uppercase;
-    font-size: 0.875em;
-}
-
-.table thead tr th {
-    border-bottom: 2px solid #e7ebee;
-}
-
-.table tbody tr td:first-child {
-    font-size: 1.125em;
-    font-weight: 300;
-}
-
-.table tbody tr td {
-    font-size: 0.875em;
-    vertical-align: middle;
-    border-top: 1px solid #e7ebee;
-    padding: 12px 8px;
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
 }

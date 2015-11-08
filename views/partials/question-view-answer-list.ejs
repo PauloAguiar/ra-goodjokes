@@ -1,0 +1,17 @@
+<div class="list-group">
+    <% answerList.forEach(function(item) { %>
+
+    <div class="container-fluid panel-question-answer-line">
+        <div class="col-md-4" style="padding-top:10px">
+             <button class="btn btn-primary" type="button"><i class="glyphicon glyphicon-thumbs-up"></i>    <span class="badge"> <%- item.votes %>  </span> </button>
+             <button class="btn btn-primary" type="button"><i class="glyphicon glyphicon-thumbs-down"></i>    <span class="badge"> 8 </span> </button>
+        </div>
+        <div class="col-md-8">
+            <%- item.content %> 
+        </div>
+	</div>
+
+
+    <% }); %>
+</div>
+
