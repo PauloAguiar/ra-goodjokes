@@ -13,7 +13,7 @@ function GetListedQuestions(path)
             if(d._vestibular !== undefined)
             {
                 document.getElementById('questionvest-' + d._vestibular._id).addEventListener("click", function() {
-                  GetListedQuestions('/questionsSample/'+ d._vestibular._id);
+                  GetListedQuestions('/questions/'+ d._vestibular._id);
                 }, false);
             }
 
@@ -64,7 +64,7 @@ function GetQuestionForm() {
             document.getElementById('taglist' + d._id).addEventListener("click", function() {
                     addUsedTag(d);
               }, false);
-        });           
+        });
       });
       var vestIdSel;
       $.get('/vestibulars', function (data) {
@@ -75,21 +75,22 @@ function GetQuestionForm() {
                     vestIdSel = d._id;
                     document.getElementById('vestName').innerHTML = d.name;
               }, false);
-        });           
+        });
       });
       document.getElementById('sendButton').addEventListener("click", function()  {
             var send = {};
             //send._vestibular = document.getElementById('vestName').innerHTML;
             send._vestibular = vestIdSel;
-            send.title = document.getElementById('title').value;            
+            send.title = document.getElementById('title').value;
             send.name = document.getElementById('name').value;
-            send.content = document.getElementById('summernote').value;
+            send.content = document.getElementById('summernote').innerHTML;
             var childs = document.getElementById('usedTagsList').childNodes;
             send._tags = [];
-            for (var i = 0; i < childs.length; i++) {              
-              send._tags.push(childs[i].id);   
+            for (var i = 0; i < childs.length; i++) {
+              send._tags.push(childs[i].id);
             }
-            $.post('/questions', send, function(resp,err) {}, 'json');
+            console.log(send);
+            $.post('/questions', send, function(resp,err) {console.log(resp);}, 'json');
           }, false);
       $('#summernote').summernote({
         height: 300,
@@ -106,9 +107,9 @@ function GetQuestionView(questionId)
       var html = templates.questionView({'answer': data._answers});
       $('#tabs').hide();
       $('#content-view').empty().append(html);
-      $('#question-title-view').html(data.title); 
+      $('#question-title-view').html(data.title);
       $('#question-content-view').html(data.content);
-      //$('#question-votes-view').html(votes); 
+      //$('#question-votes-view').html(votes);
     });
   });
 }

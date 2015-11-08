@@ -52,7 +52,6 @@ exports.show = function (req, res) {
     });
 };
 
-
 exports.recent = function (req, res) {
     Vestibular
         .aggregate(
@@ -62,7 +61,6 @@ exports.recent = function (req, res) {
             text: {$toUpper: "$name"},
             _id: 1,
             count: {$size: "$_questions"}
-            
           }
         }
       ]
@@ -70,7 +68,6 @@ exports.recent = function (req, res) {
     .limit(10)
     .sort('-updated_at')
     .exec(function (err, results) {
-      console.log(JSON.stringify(results));
       return res.json(results);
     });
 };
