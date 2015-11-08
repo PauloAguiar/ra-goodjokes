@@ -81,6 +81,14 @@ module.exports = function (app) {
             ]);
     });
 
+    app.get('/recentTagListSample', function (req, res) {
+        res.json(
+            [
+                {'text': 'ITA 2015', 'id': 'ita-2015'},
+                {'text': 'IME 2015', 'id': 'ime-2015'}
+            ]);
+    });
+
 	app.param ('userId',        user.load);
 	app.get   ('/users/:id',    user.show);
 	app.get   ('/users/create', user.create);
