@@ -15,16 +15,20 @@ module.exports = function (app) {
 	app.post  ('/users',         user.save);
 	
 	//question routes
-	app.get   ('/questions/search',             question.list);
-	app.param ('questionId',      			    question.load);
-	app.get   ('/questions/:questionId',        question.show);
-    app.get   ('/questions'            ,        question.default);
-	app.post  ('/questions'            ,        question.save);
-	app.post  ('/questions/:questionId/answer', question.answer);
-	app.delete('/questions/:questionId',        question.remove);
+	app.get   ('/questions/search',                        question.list);
+	app.param ('questionId',      			               question.load);
+	app.get   ('/questions/:questionId',                   question.show);
+    app.get   ('/questions'            ,                   question.default);
+	app.post  ('/questions'            ,                   question.save);
+	app.post  ('/questions/:questionId/answer',            question.answer);
+	app.delete('/questions/:questionId',                   question.remove);
+    app.get   ('/questions/:questionId/upvote/:status',    question.upvote);
+    app.get   ('/questions/:questionId/downvote/:status',  question.downvote);
 	
 	//answer routes
 	app.delete('/answers/:answerId', answer.remove);
+    app.get   ('/answers/:answerId/upvote/:status',    answer.upvote);
+    app.get   ('/answers/:answerId/downvote/:status',  answer.downvote);
 	
 	//tag routes
 	app.get   ('/tags/:tagId/getName', tag.getName)

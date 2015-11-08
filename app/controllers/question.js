@@ -168,3 +168,47 @@ exports.default = function (req, res) {
         return res.json({"_questions" : results});
     });
 };
+
+exports.upvote = function (req, res) {
+  var qId = req.params.questionId;
+  var status = req.params.status;
+
+  return Question.findOne({ _id : qId })
+        .exec(function(err, q) {          
+          if (err)
+            return res.error({'msg': 'error_on_save_answer'});
+            console.log(status);
+            if (status === 'true')
+              q.upVotes += 1;
+            else
+              q.upVotes -= 1; 
+              
+               if (q.upVotes <= 0)
+                q.upVotes = 0;
+                
+              q.save();
+              res.json(q);    
+      });
+};
+
+
+exports.downvote = function (req, res) {
+  var qId = req.params.questionId;
+  var status = req.params.status;
+
+  return Question.findOne({ _id : qId })
+        .exec(function(err, q) {          
+          if (err)
+            return res.error({'msg': 'error_on_save_answer'});
+            console.log(status);
+            if (status === 'true')
+              q.downVotes += 1;
+            else
+              q.downVotes -= 1; 
+              
+              if (q.downVotes <= 0)
+                q.downVotes = 0;
+              q.save();
+              res.json(q);    
+      });
+};
