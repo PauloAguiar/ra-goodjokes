@@ -6,6 +6,8 @@
 var mongoose = require('mongoose');
 var Question = mongoose.model('Question');
 var User = mongoose.model('User');
+var Tag = mongoose.model('Tag');
+var Vestibular = mongoose.model('Vestibular');
 var Answer = mongoose.model('Answer');
 
 /**
@@ -38,9 +40,28 @@ exports.save = function (req, res) {
         return question.save(function (err) {
           if (err)
             return res.error({'msg': 'error_on_save_question'});
+            
+          //Add to existing tags
+          question._tags.forEach(function(tagId, idx, array) {
+            return Tag.findById(tagId, function (err, tag) {
+                tag._questions.push(question._id);
+                tag.save(function(err) {
+                  //caguei
+                })
+            });
+          });
+          
+          //Add to existing vestibular
+          return Vestibular.findById(question._vestibular, function (err, vestibular) {
+                vestibular._questions.push(question._id);
+                vestibular.save(function(err) {
+                  //caguei
+                });
+            });
           
           return res.json({'msg': 'question_saved'});
         });
+        
       }
       else {
         return res.error({'msg': 'used_id_not_found'});

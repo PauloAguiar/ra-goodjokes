@@ -5,6 +5,7 @@
 
 var mongoose = require('mongoose');
 var Tag = mongoose.model('Tag');
+var Question = mongoose.model('Question');
 
 /**
  * Load
@@ -37,9 +38,15 @@ exports.save = function (req, res) {
 };
 
 exports.show = function (req, res) {
-  var tag = req.profile;
-  res.render('tags/show', {
-    title: tag.name,
-    tag: tag
-  });
+  var tagId = req.params.tagId;
+  
+  Question.find({'_tags' : {$ne :tagId}})
+    .exec(function (err, results) {
+      res.json(results);
+    });
+  
+  // res.render('tags/show', {
+  //   title: tag.name,
+  //   tag: tag
+  // });
 };

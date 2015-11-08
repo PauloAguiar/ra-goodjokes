@@ -5,6 +5,7 @@ var autoIncrement = require('mongoose-auto-increment');
 autoIncrement.initialize(mongoose.connection);
 
 var tagSchema = new Schema({
+  _questions: [{ type: Number, ref: 'Question' }],
 	name: { type: String, unique: true},
   	created_at: { type: Date, default: Date.now },
   	updated_at: { type: Date, default: Date.now }

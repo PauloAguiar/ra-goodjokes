@@ -33,4 +33,4 @@ module.exports = function (app) {
 	app.post  ('/vestibulars', vestibular.save);
 	app.get   ('/vestibulars/:vestibularName', vestibular.show);
 
-}
+};
