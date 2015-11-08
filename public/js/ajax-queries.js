@@ -10,7 +10,7 @@ function GetListedQuestions(path)
                 $('#content-view').append(html);
                 if(d.vest !== undefined)
                 {
-                    document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
+                    document.getElementById('questionvest-' + d.vest.id).addEventListener("click", function() {
                       GetListedQuestions('/questionsSample/'+ d.vest.tag);
                     }, false);
                 }
@@ -18,12 +18,20 @@ function GetListedQuestions(path)
                 document.getElementById('question-' + d.id).addEventListener("click", function() {
                     GetQuestionView(d.id);
                 }, false);
+                for (tag in d.tags)
+                {
+                  document.getElementById('question-' + d.id + '-tag-' + d.tags[tag].id).addEventListener("click", function() {
+                    GetListedQuestions('/tags/' + d.tags[tag].id);
+                  }, false);
+                }
             });
         }
         else
         {
             return $('#content-view').append("<center>Nenhuma pergunta encontrada.</center>");
         }
+    }).error(function() {
+        return $('#content-view').empty().append("<center>Nenhuma pergunta encontrada.</center>");
     });
 }
 

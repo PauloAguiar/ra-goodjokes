@@ -47,7 +47,7 @@ module.exports = function (app) {
                     'views': 550,
                     'votes': 2,
                     'text': 'Good Jokes Mate',
-                    'tags': ['good', 'jokes', 'mate'],
+                    'tags': [{'name': 'good', 'id': 1}, {'name': 'jokes', 'id': 2 }, {'name': 'mate', 'id': 3}],
                     'vest': {'name': 'ITA 2015', 'id': '1', 'tag': 'ita-2015'},
                     'date': 1446950406,
                     'user': 'alexandremuzio'
@@ -58,7 +58,7 @@ module.exports = function (app) {
                     'views': 2000,
                     'votes': 0,
                     'text': 'Good Jokes Mate 2',
-                    'tags': ['real', 'funny'],
+                    'tags': [{'name': 'good', 'id': 1}, {'name': 'jokes', 'id': 2 }, {'name': 'mate', 'id': 3}],
                     'date': 1446949866,
                     'user': 'johngarden'
                 },
@@ -68,7 +68,7 @@ module.exports = function (app) {
                     'views': 2000,
                     'votes': 0,
                     'text': 'Good Jokes Mate 3',
-                    'tags': ['real', 'funny'],
+                    'tags': [{'name': 'good', 'id': 1}, {'name': 'jokes', 'id': 2 }, {'name': 'mate', 'id': 3}],
                     'vest': {'name': 'ITA 2015', 'id': '2', 'tag': 'ita-2015'},
                     'date': 1446949866,
                     'user': 'mateus'
@@ -85,7 +85,7 @@ module.exports = function (app) {
                     'views': 550,
                     'votes': 2,
                     'text': 'Good Jokes Mate',
-                    'tags': ['good', 'jokes', 'mate'],
+                    'tags': [{'name': 'good', 'id': 1}, {'name': 'jokes', 'id': 2 }, {'name': 'mate', 'id': 3}],
                     'vest': {'name': 'ITA 2015', 'id': '1', 'tag': 'ita-2015'},
                     'date': 1446950406,
                     'user': 'alexandremuzio'
@@ -96,7 +96,7 @@ module.exports = function (app) {
                     'views': 2000,
                     'votes': 0,
                     'text': 'Good Jokes Mate 3',
-                    'tags': ['real', 'funny'],
+                    'tags': [{'name': 'good', 'id': 1}, {'name': 'jokes', 'id': 2 }, {'name': 'mate', 'id': 3}],
                     'vest': {'name': 'ITA 2015', 'id': '2', 'tag': 'ita-2015'},
                     'date': 1446949866,
                     'user': 'mateus'
@@ -125,7 +125,7 @@ module.exports = function (app) {
                     'views': 550,
                     'votes': 2,
                     'text': 'Good Jokes Mate',
-                    'tags': ['good', 'jokes', 'mate'],
+                    'tags': [{'name': 'good', 'id': 1}, {'name': 'jokes', 'id': 2 }, {'name': 'mate', 'id': 3}],
                     'vest': {'name': 'ITA 2015', 'id': '1', 'tag': 'ita-2015'},
                     'date': 1446950406,
                     'user': 'alexandremuzio'

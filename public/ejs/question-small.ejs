@@ -29,7 +29,7 @@
         <div class="col-xs-8 summary">
             <div class="summary-text">
                 <% if(question.vest !== undefined) {%>
-                    <a href="#" id="<%-'questionvest' + question.vest.id%>" type="button" class="btn btn-primary btn-xs"><%- question.vest.name %></a>
+                    <a href="#" id="<%-'questionvest-' + question.vest.id%>" type="button" class="btn btn-primary btn-xs"><%- question.vest.name %></a>
                 <% } %>
                 <a id="question-<%- question.id %>" href="#"><%- question.text %></a>
             </div>
@@ -39,7 +39,7 @@
                         <div class="pull-left">
                             <% if($.isArray(question.tags)) { %>
                                 <% question.tags.forEach(function(tag) { %>
-                                    <a href="#" type="button" class="tag"><%- tag %></a>
+                                    <a id="question-<%- question.id %>-tag-<%- tag.id %>" href="#" type="button" class="tag"><%- tag.name %></a>
                                 <% }); %>
                             <% } %>
                         </div>
