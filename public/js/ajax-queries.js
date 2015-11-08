@@ -82,7 +82,7 @@ function GetQuestionForm() {
             send._vestibular = vestIdSel;
             send.title = document.getElementById('title').value;
             send.name = document.getElementById('name').value;
-            send.content = document.getElementById('summernote').innerHTML;
+            send.content = $('#summernote').code();
             var childs = document.getElementById('usedTagsList').childNodes;
             send._tags = [];
             for (var i = 0; i < childs.length; i++) {
