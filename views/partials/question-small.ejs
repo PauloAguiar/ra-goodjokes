@@ -1,0 +1,58 @@
+<div class="container-fluid small-question">
+    <div class="row">
+        <div class="col-xs-4 counters">
+            <div class="answers">
+                <div class="question-counters">
+                    <%- question.answers %>
+                </div>
+                <div class="question-counters-text">
+                    respostas
+                </div>
+            </div>
+            <div class="views">
+                <div class="question-counters">
+                    <%- question.views %>
+                </div>
+                <div class="question-counters-text">
+                    visualizações
+                </div>
+            </div>
+            <div class="votes">
+                <div class="question-counters">
+                    <%- question.votes %>
+                </div>
+                <div class="question-counters-text">
+                    votos
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-8 summary">
+            <div class="summary-text">
+                <% if(question.vest !== undefined) {%>
+                    <a href="#" id="<%-'questionvest' + question.vest.id%>" type="button" class="btn btn-primary btn-xs"><%- question.vest.name %></a>
+                <% } %>
+                <a href="#"><%- question.text %></a>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-6 tags">
+                        <div class="pull-left">
+                            <% if($.isArray(question.tags)) { %>
+                                <% question.tags.forEach(function(tag) { %>
+                                    <a href="#" type="button" class="tag"><%- tag %></a>
+                                <% }); %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 summary-user-info">
+                        <div class="pull-right">
+                            <%- formatTimeStamp(question.date) %>
+                            <a href="#"><%- question.user %></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
