@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 autoIncrement.initialize(mongoose.connection);
 
@@ -20,6 +21,7 @@ tagSchema.statics = {
   }
 };
 
+tagSchema.plugin(deepPopulate, {});
 tagSchema.plugin(autoIncrement.plugin, 'Tag');
 var Tag = mongoose.model('Tag', tagSchema);
 
