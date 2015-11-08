@@ -1,0 +1,43 @@
+<div class="text-left">
+    <div class="panel panel-default">
+        <div class="panel-body" style="text-align:center">
+            <h1><div id="question-title-view"></div></h1>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row question-show" style="text-align: left">
+            <div class="col-md-4"  style="vertica-align:center">
+                <button type="button" class="btn btn-primary center-block" > <i class="glyphicon glyphicon-thumbs-up" ></i> Such a Question</button>
+                <div style="text-align:center"> <h4><div id="question-votes-view"></div></h4> </div>
+                <button type="button" class="btn btn-primary center-block" > <i class="glyphicon glyphicon-thumbs-down" ></i> Shame on You! </button>
+            </div>
+            <div class="col-md-8">
+                <p>  <div id="question-content-view"></div>  </p>
+            </div>
+            <!--div >
+            <button type="button" class="btn btn-primary center-block" > <i class="glyphicon glyphicon-star-empty" ></i> Wow Great! </button>
+        </div-->
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"> Respostas</h3>
+        </div>
+        <div class="list-group">
+            <% answerList.forEach(function(item) { %>
+
+            <div class="container-fluid panel-question-answer-line">
+                    <div class="col-md-4" style="padding-top:10px">
+                         <button class="btn btn-primary" type="button"><i class="glyphicon glyphicon-thumbs-up"></i>    <span class="badge"> <%- item.votes %>  </span> </button>
+                         <button class="btn btn-primary" type="button"><i class="glyphicon glyphicon-thumbs-down"></i>    <span class="badge"> 8 </span> </button>
+                    </div>
+                    <div class="col-md-8">
+                        <%- item.content %> 
+                    </div>
+                </div>
+                <% }); %>
+            </div>
+
+
+    </div>
+</div>
+</div>
