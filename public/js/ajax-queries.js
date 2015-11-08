@@ -89,7 +89,13 @@ function GetQuestionForm() {
               send._tags.push(childs[i].id);
             }
             console.log(send);
-            $.post('/questions', send, function(resp,err) {console.log(resp);}, 'json');
+            $.post('/questions', send, function(resp,err) {
+              console.log(resp);
+              if (err == 'success')
+                GetListedQuestions('/questions');
+                //var html = '<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Thanks!</strong> You make the community happy with your question.</div>';
+                //$('#content-view').append(html);
+            }, 'json');
           }, false);
       $('#summernote').summernote({
         height: 300,
