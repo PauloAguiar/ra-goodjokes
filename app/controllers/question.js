@@ -5,6 +5,7 @@
 
 var mongoose = require('mongoose');
 var Question = mongoose.model('Question');
+var User = mongoose.model('User');
 var Answer = mongoose.model('Answer');
 
 /**
@@ -28,12 +29,22 @@ exports.load = function (req, res, next, id) {
  */
 
 exports.save = function (req, res) {
-  var user = new Question(req.body);
-  console.log(user);
-  user.save(function (err) {
-    if (err) {
-      return res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
-    }
+  return User.getIdBy({"name" : req.body.name}, function(userId) {
+      if(userId !== null) {
+        req.body._creator = userId;
+  
+        var question = new Question(req.body);
+      
+        return question.save(function (err) {
+          if (err)
+            return res.error({'msg': 'error_on_save_question'});
+          
+          return res.json({'msg': 'question_saved'});
+        });
+      }
+      else {
+        return res.error({'msg': 'used_id_not_found'});
+      }
   });
 };
 

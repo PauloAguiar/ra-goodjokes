@@ -16,6 +16,19 @@ var userSchema = new Schema({
 
 
 userSchema.statics = {
+	
+  getIdBy: function (options, callback) {
+	  var criteria = options || {}
+
+	  this.findOne(criteria, function(err, obj) {
+      if (err) return handleError(err);
+      if (obj) {
+        return callback(obj.id);
+      }
+      return callback(null);
+    });
+  },
+  	
   load: function (options, cb) {
     options.select = options.select || 'name username';
     this.findOne(options.criteria)

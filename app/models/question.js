@@ -5,10 +5,10 @@ var autoIncrement = require('mongoose-auto-increment');
 autoIncrement.initialize(mongoose.connection);
 
 var questionSchema = new Schema({
-	_creator: { type: Schema.Types.ObjectId, ref: 'User'},
-	_answers: [{ type: Schema.Types.ObjectId, ref: 'Answer' }],
-	_tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }],
-	_vestibular: { type: Schema.Types.ObjectId, ref: 'Vestibular' },
+	_creator: { type: Number, ref: 'User'},
+	_answers: [{ type: Number, ref: 'Answer' }],
+	_tags: [{ type: Number, ref: 'Tag' }],
+	_vestibular: { type: Number, ref: 'Vestibular' },
   	title: String,
   	content: String,
   	votes: Number,
