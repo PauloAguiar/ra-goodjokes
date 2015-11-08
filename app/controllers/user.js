@@ -26,25 +26,23 @@ exports.load = function (req, res, next, id) {
  * Create user
  */
 
-exports.create = function (req, res) {
+exports.save = function (req, res) {
   var user = new User(req.body);
   console.log(user);
   user.save(function (err) {
     if (err) {
       return res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
     }
-
-    // manually login the user once successfully signed up
-    // req.logIn(user, function(err) {
-    //   if (err) req.flash('info', 'Sorry! We are not able to log you in!');
-    //   return res.redirect('/');
-    // });
   });
 };
 
 /**
  *  Show profile
  */
+
+exports.create = function (req, res) {
+  res.render('users/create');
+};
 
 exports.show = function (req, res) {
   var user = req.profile;

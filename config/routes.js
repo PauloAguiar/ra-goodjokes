@@ -5,12 +5,20 @@ module.exports = function (app) {
 		res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
 	});
 
-	app.param ('userId',        user.load);
-	app.get   ('/users/:id',    user.show);
-	app.get   ('/users/create', user.create);
-	// app.get   ('/users/edit',   user.edit);
-	app.post  ('/users',        user.create);
-	// app.put   ('/users/:id',    user.update);
-	// app.delete('/users/:id',    user.remove);
+	app.param ('userId',         user.load);
+	app.get   ('/users/:userId', user.show);
+	app.post  ('/users',         user.save);
+
+	app.get   ('/questions/search/:query',      question.list);
+	app.get   ('/questions/:questionId',        question.show);
+	app.post  ('/questions'            ,        question.save);
+	app.post  ('/questions/:questionId/answer', question.answer);
+	//app.delete('/questions/:questionId',        question.delete);
+
+	//app.delete('/answer/:answerId',             answer.delete);
+
+	app.get   ('/tag/:tagName', tag.show);
+
+
 
 }
