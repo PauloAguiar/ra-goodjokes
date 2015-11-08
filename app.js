@@ -13,7 +13,6 @@ fs.readdirSync(join(__dirname, 'app/models')).forEach(function (file) {
 });
 
 require('./config/express')(app);
-
 require('./config/routes')(app);
 
 app.listen(port);
