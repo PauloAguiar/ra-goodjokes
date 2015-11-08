@@ -54,7 +54,7 @@ exports.show = function (req, res) {
 
 exports.recent = function (req, res) {
   Tag.find({})
-    .populate('_questions', 'name')
+    .populate('_questions')
     .limit(10)
     .sort('-updated_at')
     .exec(function (err, results) {

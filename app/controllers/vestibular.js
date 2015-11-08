@@ -47,14 +47,26 @@ exports.show = function (req, res) {
     .exec(function (err, results) {
       res.json(results);
     });
-  
- 
-  // Vesibular.findOne({name: vestibularName})
-  //   .exec(function(err, v) {
-      
-  //       Question.find({"_vestibular" : vestibularId})
-  //     .exec(function (err, results) {
-  //       res.json(results);
-  //     });
-  //   })
+};
+
+
+exports.recent = function (req, res) {
+    Vestibular
+        .aggregate(
+      [
+        {
+          $project: {
+            text: "$name",
+            _id: 1,
+            count: {$size: "$_questions"}
+            
+          }
+        }
+      ]
+    )
+    .limit(10)
+    .sort('-updated_at')
+    .exec(function (err, results) {
+      res.json(results);
+    });
 };

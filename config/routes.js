@@ -31,6 +31,7 @@ module.exports = function (app) {
 	//app.get   ('/tags/:tagId', tag.show);
 
 	//vestibular routes
+    app.get   ('/vestibulars/recent', vestibular.recent);
 	app.post  ('/vestibulars', vestibular.save);
 	app.get   ('/vestibulars/:vestibularId', vestibular.show);
 
@@ -103,13 +104,13 @@ module.exports = function (app) {
         res.json([]);
     });
 
-    app.get('/lastVestListSample', function (req, res) {
-        res.json(
-            [
-                {'text': 'ITA 2015', 'tag': 'ita-2015', 'id': '1', 'count': 2},
-                {'text': 'IME 2015', 'tag': 'ime-2015', 'id': '2', 'count': 0}
-            ]);
-    });
+    // app.get('/lastVestListSample', function (req, res) {
+    //     res.json(
+    //         [
+    //             {'text': 'ITA 2015', 'tag': 'ita-2015', 'id': '1', 'count': 2},
+    //             {'text': 'IME 2015', 'tag': 'ime-2015', 'id': '2', 'count': 0}
+    //         ]);
+    // });
 
     app.get('/tags/ita', function (req,res) {
         res.json(
@@ -124,14 +125,6 @@ module.exports = function (app) {
                     'date': 1446950406,
                     'user': 'alexandremuzio'
                 }
-            ]);
-    });
-
-    app.get('/recentTagsListSample', function (req, res) {
-        res.json(
-            [
-                {'text': 'good', 'id': 'ita'},
-                {'text': 'jokes', 'id': 'jokes'}
             ]);
     });
     
@@ -153,19 +146,5 @@ module.exports = function (app) {
 
     app.get('/question_view', function (req, res) {
         res.render('question_view', {'title': 'Good Jokes Mate'});
-    });
-
-
-    app.get('/provaListSample', function (req, res) {
-        res.json({
-            'current_page': 0,
-            'total_pages': 2,
-            'list': [
-                {'text': 'ITA 2015', 'id': 'ita-2015', 'count': 2, 'date': 1446949866},
-                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
-                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
-                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
-                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
-            ]});
     });
 };
