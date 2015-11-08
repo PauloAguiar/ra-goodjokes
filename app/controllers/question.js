@@ -54,7 +54,7 @@ exports.save = function (req, res) {
           
           //Add to existing vestibular
           Vestibular.findById(question._vestibular, function (err, vestibular) {
-                if (err)
+                if (err || !vestibular)
                   return;
                 vestibular._questions.push(question._id);
                 vestibular.save(function(err) {
