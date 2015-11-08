@@ -6,6 +6,7 @@
 var mongoose = require('mongoose');
 var Tag = mongoose.model('Tag');
 var Question = mongoose.model('Question');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 /**
  * Load
@@ -39,18 +40,23 @@ exports.save = function (req, res) {
 
 exports.show = function (req, res) {
   var tagId = req.params.tagId;
-  
-  Tag.findById(tagId)
-    .populate('_questions')
-    .populate('_questions._tags')
-    .populate('_questions._vestibular')
-    // .populate('_questions.answers')
-    .exec(function (err, results) {
-      
-      console.log(JSON.stringify(results));
 
-      res.json(results);
+  Tag.findById(tagId)
+    .deepPopulate('_questions._vestibular _questions._answers _questions._tags')
+    .exec(function(err, res) {
+        console.log(JSON.stringify(res));
     });
+  // Tag.findById(tagId)
+  //   .populate('_questions')
+  //   .populate('_questions._tags')
+  //   .populate('_questions._vestibular')
+  //   // .populate('_questions.answers')
+  //   .exec(function (err, results) {
+      
+  //     console.log(JSON.stringify(results));
+
+  //     res.json(results);
+  //   });
 
   // res.render('tags/show', {
   //   title: tag.name,
