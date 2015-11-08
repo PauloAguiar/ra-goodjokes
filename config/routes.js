@@ -18,6 +18,7 @@ module.exports = function (app) {
 	app.get   ('/questions/search',             question.list);
 	app.param ('questionId',      			    question.load);
 	app.get   ('/questions/:questionId',        question.show);
+    app.get   ('/questions'            ,        question.default);
 	app.post  ('/questions'            ,        question.save);
 	app.post  ('/questions/:questionId/answer', question.answer);
 	app.delete('/questions/:questionId',        question.remove);

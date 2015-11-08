@@ -9,6 +9,7 @@ var User = mongoose.model('User');
 var Tag = mongoose.model('Tag');
 var Vestibular = mongoose.model('Vestibular');
 var Answer = mongoose.model('Answer');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 /**
  * Load
@@ -152,4 +153,14 @@ exports.remove = function (req, res) {
       return res.json({'msg': 'answers_deleted'});
     })
   });
-}
+};
+
+exports.default = function (req, res) {
+  Question.find()
+    .deepPopulate('_vestibular _answers _tags _creator')
+    .limit(10)
+    .exec(function(err, results) {
+        console.log(results);
+        return res.json({"_questions" : results});
+    });
+};
