@@ -28,10 +28,8 @@ exports.load = function (req, res, next, id) {
 
 exports.create = function (req, res) {
   var user = new User(req.body);
-  debugger;
-  console.log(req.body);
+  console.log(user);
   user.save(function (err) {
-    console.log(err);
     if (err) {
       return res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
     }
