@@ -35,6 +35,7 @@ exports.save = function (req, res) {
     if (err) {
       return res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
     }
+      res.json({});
   });
 };
 

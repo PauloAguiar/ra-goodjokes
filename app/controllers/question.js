@@ -31,7 +31,7 @@ exports.load = function (req, res, next, id) {
  */
 
 exports.save = function (req, res) {
-  return User.getIdBy({"name" : req.body.name}, function(userId) {
+  return User.getIdBy({"username" : req.body.name}, function(userId) {
       if(userId !== null) {
         req.body._creator = userId;
   
@@ -52,7 +52,7 @@ exports.save = function (req, res) {
           });
           
           //Add to existing vestibular
-          return Vestibular.findById(question._vestibular, function (err, vestibular) {
+          Vestibular.findById(question._vestibular, function (err, vestibular) {
                 vestibular._questions.push(question._id);
                 vestibular.save(function(err) {
                   //caguei
@@ -64,7 +64,7 @@ exports.save = function (req, res) {
         
       }
       else {
-        return res.error({'msg': 'used_id_not_found'});
+        return res.json({'msg': 'used_id_not_found'});
       }
   });
 };
@@ -116,7 +116,7 @@ exports.answer = function (req, res) {
   req.body._question = Number(req.params.questionId);
   console.log(req.body);
   
-  User.findOne({ "name": req.body.user }, function(err, user) {
+  User.findOne({ "name": req.body.name }, function(err, user) {
     var ans = new Answer(req.body);
 
     return ans.save(function (err) {
@@ -128,7 +128,7 @@ exports.answer = function (req, res) {
             return res.json({'msg': 'error_on_updating_question'});
           console.log(question);
           question._answers.push(ans._id);
-
+          console.log('After push', question);
           return question.save(function(err) {
             console.log(err);
             if(err)
