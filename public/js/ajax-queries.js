@@ -1,13 +1,16 @@
-function GetListedQuestions(vestId)
+function GetListedQuestions(vest)
 {
-    return $.get('/questionsSample/' + vestId, function (data) {
+    return $.get('/questionsSample/' + vest.tag, function (data) {
         $('#content-view').empty();
         $('#tabs').show();
         if(data.length > 0)
         {
             data.forEach(function(d) {
-                var html = templates.question({'question': d});
+                var html = templates.question({'question': d});                
                 $('#content-view').append(html);
+                document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
+                    getListedQuestions(d.vest);
+                }, false);
             });
         }
         else
@@ -37,4 +40,17 @@ function GetQuestionForm() {
         height: 300,
       });
   });
+}
+
+function getListedTags(tagId)
+{
+    return $.get('/tags/' + tagId, function (data) {
+        if(data.length > 0)
+        {
+            data.forEach(function(d) {
+                var html = templates.question({'question': d});
+                $('#content-view').empty().append(html);
+            });
+        }
+    });
 }

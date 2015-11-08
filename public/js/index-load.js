@@ -29,7 +29,7 @@ function getQuestions() {
       $('#question-list').append(html);
       if (d.vest !== undefined) {
         document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
-                getListedQuestions(d.vest);
+                GetListedQuestions(d.vest);
             }, false);
       } 
     });
@@ -42,7 +42,7 @@ function getLastVestList() {
       $('#last-vest-list').append(html); 
       data.forEach(function(item) {
           document.getElementById('questionvestlist' + item.id).addEventListener("click", function() {
-              getListedQuestions(item);
+              GetListedQuestions(item);
           }, false);
       });
   });

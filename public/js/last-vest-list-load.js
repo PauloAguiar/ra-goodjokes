@@ -9,8 +9,8 @@ $(document).ready(function() {
       var html = templates.lastVestList({'lastVestList': data});
       $('#last-vest-list').append(html);
       data.forEach(function(item) {
-          document.getElementById(item.id).addEventListener("click", function() {
-              GetListedQuestions(item.id);
+          document.getElementById('questionvestlist' + item.id).addEventListener("click", function() {
+              GetListedQuestions(item);
           }, false);
       });
     });
