@@ -42,7 +42,13 @@ exports.show = function (req, res) {
   
   Tag.findById(tagId)
     .populate('_questions')
+    .populate('_questions._tags')
+    .populate('_questions._vestibular')
+    // .populate('_questions.answers')
     .exec(function (err, results) {
+      
+      console.log(JSON.stringify(results));
+
       res.json(results);
     });
 
@@ -54,7 +60,7 @@ exports.show = function (req, res) {
 
 exports.recent = function (req, res) {
   Tag.find({})
-    .populate('_questions', 'name')
+    .populate('_questions')
     .limit(10)
     .sort('-updated_at')
     .exec(function (err, results) {
