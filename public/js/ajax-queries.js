@@ -53,11 +53,12 @@ function GetQuestionForm() {
         });           
       });
       $.get('/vestibulars', function (data) {
+        console.log(data);
         data.forEach(function(d) {
             var html = '<li><a id="vestlist' + d._id + '">' + d.name + '</a></li>';
             $('#allVestsList').append(html);
             document.getElementById('vestlist' + d._id).addEventListener("click", function() {
-                    document.getElementById(dropdownMenu2).value = d.name;
+                    document.getElementById('dropdownMenu2').innerHTML = d.name + ' <span class="caret"></span>';
               }, false);
         });           
       });
