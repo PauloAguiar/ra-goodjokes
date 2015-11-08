@@ -12,6 +12,7 @@ var questionSchema = new Schema({
 	_vestibular: { type: Number, ref: 'Vestibular', default: -1 },
   	title: String,
   	content: String,
+    views: { type: Number, default: 0 },
   	upVotes: { type: Number, default: 0 },
     downVotes: { type: Number, default: 0 },
   	created_at: { type: Date, default: Date.now },
@@ -36,6 +37,10 @@ questionSchema.methods = {
       this.downVotes -= 1;
     else
       this.upVotes -= 1;
+  },
+
+  addView : function () {
+    this.views += 1;
   }
 };
 

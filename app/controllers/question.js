@@ -54,6 +54,8 @@ exports.save = function (req, res) {
           
           //Add to existing vestibular
           Vestibular.findById(question._vestibular, function (err, vestibular) {
+                if (err)
+                  return;
                 vestibular._questions.push(question._id);
                 vestibular.save(function(err) {
                   //caguei
@@ -83,6 +85,8 @@ exports.show = function (req, res) {
         .exec(function(err, q) {          
           if (err)
             return res.error({'msg': 'error_on_save_answer'});
+          q.addView();
+          q.save();
           res.json(q);
     });
     
