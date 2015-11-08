@@ -56,7 +56,7 @@ exports.recent = function (req, res) {
       [
         {
           $project: {
-            text: "$name",
+            text: {$toUpper: "$name"},
             _id: 1,
             count: {$size: "$_questions"}
             

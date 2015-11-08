@@ -27,8 +27,8 @@ module.exports = function (app) {
 	
 	//tag routes
     app.get   ('/tags', tag.recent); //most recent
+    app.get   ('/tags/:tagId', tag.show);
 	app.post  ('/tags', tag.save);
-	//app.get   ('/tags/:tagId', tag.show);
 
 	//vestibular routes
     app.get   ('/vestibulars/recent', vestibular.recent);
