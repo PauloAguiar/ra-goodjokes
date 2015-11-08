@@ -4,17 +4,15 @@
             <div class="row">
                 <% include question_list_tabs %>
             </div>
-            <div class="row">
-                <% include question_small %>
-            </div>
-            <div class="row">
-                <% include question_small %>
+            <div id="question-list">
             </div>
         </div>
     </div>
 
     <div class="col-md-4">
-        <button type="button" class="btn btn-primary btn-md btn-block">Perguntar</button>
+        <div class="ask-button">
+            <button type="button" class="btn btn-primary btn-md btn-block">Perguntar</button>
+        </div>
 
         <% include searchbar %>
         <% include last %>
