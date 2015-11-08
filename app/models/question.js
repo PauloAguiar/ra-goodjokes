@@ -17,6 +17,28 @@ var questionSchema = new Schema({
   	updated_at: { type: Date, default: Date.now }
 });
 
+
+
+//class methods
+
+questionSchema.methods = {
+  addVote : function (isDownvote, cb) {
+    if (isDownvote)
+      this.downVotes += 1;
+    else
+      this.upVotes += 1;
+  },
+  
+   removeVote : function (isDownvote, cb) {
+    if (isDownvote)
+      this.downVotes -= 1;
+    else
+      this.upVotes -= 1;
+  }
+};
+
+
+//static methods
 questionSchema.statics = {
 	
   getUserNamesById: function (questionList, callback) {
@@ -42,3 +64,5 @@ questionSchema.statics = {
 var Question = mongoose.model('Question', questionSchema);
 
 module.exports = Question;
+
+
