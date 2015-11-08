@@ -6,7 +6,7 @@ autoIncrement.initialize(mongoose.connection);
 
 var questionSchema = new Schema({
 	_creator: { type: Number, ref: 'User'},
-	_answers: [{ type: Number, ref: 'Answer' }],
+	_answers: [{ type : Number, ref: 'Answer' }],
 	_tags: [{ type: Number, ref: 'Tag' }],
 	_vestibular: { type: Number, ref: 'Vestibular' },
   	title: String,

@@ -58,8 +58,10 @@ exports.show = function (req, res) {
   
     return Question.findOne({ _id : qId })
         .populate('_creator', 'id name')
-        .exec(function(err, q) {
-       return res.json(q);
+        .exec(function(err, q) {          
+          if (err)
+            return res.error({'msg': 'error_on_save_answer'});
+          res.json(q);
     });
     
   // res.render('question/show', {
@@ -79,6 +81,8 @@ exports.list = function (req, res) {
     { "title": { "$regex": query, "$options": "i" } })
       .populate( '_creator', 'id name')
       .exec(function (err, results) {
+        if (err)
+          return res.error({'msg': 'error_on_listing'});
         res.json(results);
       });
 };
@@ -88,9 +92,43 @@ exports.list = function (req, res) {
  */
 
 exports.answer = function (req, res) {
-   var ans = new Answer(req.body);
-  // res.render('question/show', {
-  //   title: question.name,
-  //   question: question
-  // });
+  req.body._question = Number(req.params.questionId);
+  console.log(req.body);
+  
+  User.findOne({ "name": req.body.user }, function(err, user) {
+    var ans = new Answer(req.body);
+
+    return ans.save(function (err) {
+      if (err)
+        return res.error({'msg': 'error_on_save_answer'});
+      console.log(ans);
+      return Question.findById(ans._question, function(err, question) {
+          if (err)
+            return res.json({'msg': 'error_on_updating_question'});
+          console.log(question);
+          question._answers.push(ans._id);
+
+          return question.save(function(err) {
+            console.log(err);
+            if(err)
+              return res.json({'msg': 'error_on_saving_question'});
+            return res.json({'msg': 'answer added'});
+          });
+          
+        });
+    });
+  });
 };
+
+exports.remove = function (req, res) {
+  Question.findByIdAndRemove(req.params.questionId, function(err, question) {    
+    if (err)
+      return res.error({'msg': 'error_on_deleting_question'});
+    Answer.remove({ "_question": question._id }, function(err) {
+      if (err)
+        return res.error({'msg': 'error_on_deleting_question_answers'});
+      
+      return res.json({'msg': 'answers_deleted'});
+    })
+  });
+}
