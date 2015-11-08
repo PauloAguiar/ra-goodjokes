@@ -15,9 +15,9 @@ module.exports = function (app) {
 	app.post  ('/users',         user.save);
 	
 	//question routes
+	app.get   ('/questions/search',             question.list);
 	app.param ('questionId',      			    question.load);
 	app.get   ('/questions/:questionId',        question.show);
-	app.get   ('/questions/search',             question.list);
 	app.post  ('/questions'            ,        question.save);
 	app.post  ('/questions/:questionId/answer', question.answer);
 	app.delete('/questions/:questionId',        question.remove);
@@ -26,9 +26,10 @@ module.exports = function (app) {
 	app.delete('/answers/:answerId', answer.remove);
 	
 	//tag routes
-    app.get   ('/tags', tag.recent); //most recent
     app.get   ('/tags/:tagId', tag.show);
-	app.post  ('/tags', tag.save);
+	app.get   ('/tags',        tag.all);
+    app.get   ('/tags/recent', tag.recent); //most recent
+	app.post  ('/tags',        tag.save);
 
 	//vestibular routes
     app.get   ('/vestibulars/recent', vestibular.recent);
