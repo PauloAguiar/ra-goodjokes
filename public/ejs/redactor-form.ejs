@@ -1,17 +1,19 @@
 <h2>Ask a question!</h2>
 
 <div class="row">
-  	<div class="col-xs-6 col-md-2">
+  	<div class="col-xs-6 col-md-1">
     	<a href="#" class="thumbnail">
-      	<img src="http://www.aeitaonline.com.br/wiki/images/8/86/AlexandreMuzio.jpg">
+      	<img src="http://img.informer.com/icons/png/32/45/45874.png">
     	</a>
   	</div>
-  	<div class="col-xs-6 col-md-10">
-  		<h4>Your question:</h4>  		
+  	<div class="col-xs-6 col-md-11">
+  		<h4>Your question:</h4>
   		<div class="form-group">
   			<input type="text" class="form-control" placeholder="Type your question here..." aria-describedby="basic-addon1">
 		</div>
-		<% include redactor.ejs %>
+		<div style="padding-top:5px">
+            <div id="summernote">Code Smell</div>
+        </div>
 		<h4>Select a space for your question: </h4>
 		<div class="dropdown">
 			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -25,13 +27,13 @@
 		    	<li><a href="#">Separated link</a></li>
 		  	</ul>
 		</div>
-		<h4>Topics: </h4>  		
+		<h4>Topics: </h4>
   		<div class="form-group">
   			<input type="text" class="form-control" placeholder="Bla Bla Bla..." aria-describedby="basic-addon1">
 		</div>
-		<div class="btn-group pull-right" role="group" aria-label="...">		  
+		<div class="btn-group pull-right" role="group" aria-label="...">
 		  <button type="button" style="margin-right:10px"class="btn btn-default">Cancel</button>
 		  <button type="button" class="btn btn-primary">Send Question</button>
-		</div>	
-  	</div>  	  
+		</div>
+  	</div>
 </div>

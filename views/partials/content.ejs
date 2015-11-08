@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-8">
         <div class="container-fluid">
-            <div class="row">
+            <div id="tabs" class="row">
                 <% include question_list_tabs %>
             </div>
             <div id="content-view">
@@ -10,12 +10,12 @@
     </div>
 
     <div class="col-md-4">
-        <div class="ask-button" >
-            <button type="button" class="btn btn-primary btn-md btn-block " disabled >Perguntar</button>
+        <div class="ask-button">
+            <button type="button" onclick="GetQuestionForm();" class="btn btn-primary btn-md btn-block">Perguntar</button>
         </div>
 
         <% include searchbar %>
-        <div id="last-vest-list"></div>        
-        <div id="recent-tags-list"></div>
+        <div id="last-vest-list"></div>
+        <% include tags %>
     </div>
 </div>
