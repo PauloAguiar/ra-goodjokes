@@ -9,7 +9,7 @@ module.exports = function (app) {
 	app.get   ('/users/:id',    user.show);
 	app.get   ('/users/create', user.create);
 	// app.get   ('/users/edit',   user.edit);
-	// app.post  ('/users',        user.save);
+	app.post  ('/users',        user.create);
 	// app.put   ('/users/:id',    user.update);
 	// app.delete('/users/:id',    user.remove);
 

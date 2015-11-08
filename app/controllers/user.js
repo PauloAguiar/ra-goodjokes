@@ -28,21 +28,19 @@ exports.load = function (req, res, next, id) {
 
 exports.create = function (req, res) {
   var user = new User(req.body);
-  user.provider = 'local';
+  debugger;
+  console.log(req.body);
   user.save(function (err) {
+    console.log(err);
     if (err) {
-      return res.render('users/signup', {
-        errors: utils.errors(err.errors),
-        user: user,
-        title: 'Sign up'
-      });
+      return res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
     }
 
     // manually login the user once successfully signed up
-    req.logIn(user, function(err) {
-      if (err) req.flash('info', 'Sorry! We are not able to log you in!');
-      return res.redirect('/');
-    });
+    // req.logIn(user, function(err) {
+    //   if (err) req.flash('info', 'Sorry! We are not able to log you in!');
+    //   return res.redirect('/');
+    // });
   });
 };
 
