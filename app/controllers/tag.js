@@ -51,3 +51,15 @@ exports.show = function (req, res) {
   //   tag: tag
   // });
 };
+
+exports.recent = function (req, res) {
+  Tag.find({})
+    .populate('_questions', 'name')
+    .limit(10)
+    .sort('-updated_at')
+    .exec(function (err, results) {
+      res.json(results);
+    });
+};
+
+
