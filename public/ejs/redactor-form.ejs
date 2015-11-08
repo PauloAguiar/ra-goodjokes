@@ -7,25 +7,34 @@
     	</a>
   	</div>
   	<div class="col-xs-6 col-md-10">
+  		<div class="input-group">
+		  <span class="input-group-addon" id="basic-addon1">@</span>
+		  <input id="name" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+		</div>
   		<h4>Your question:</h4>
   		<div class="form-group">
-  			<input type="text" class="form-control" placeholder="Type your question here..." aria-describedby="basic-addon1">
+  			<input id="title" type="text" class="form-control" placeholder="Type your question here..." aria-describedby="basic-addon1">
 		</div>
 		<div style="padding-top:5px">
             <div id="summernote">Code Smell</div>
         </div>
-		<h4>Select a space for your question: </h4>
-		<div class="dropdown">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	    		Dropdown
-	    		<span class="caret"></span>
-	    	</button>
-	  		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-		    	<li><a href="#">Action</a></li>
-		    	<li><a href="#">Another action</a></li>
-		    	<li><a href="#">Something else here</a></li>
-		    	<li><a href="#">Separated link</a></li>
-		  	</ul>
+		<h4>Select a tag for your question: </h4>
+		<div class="btn-toolbar" role="toolbar" id="usedTagsList"></div>
+		<div class="btn-toolbar" role="toolbar" aria-label="...">
+			<div class="dropdown btn-group" role="group">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    		<b>Tags</b>
+		    		<span class="caret"></span>
+		    	</button>
+		  		<ul id="allTagsList" class="dropdown-menu" aria-labelledby="dropdownMenu1"></ul>
+			</div>
+			<div class="dropdown btn-group" role="group">
+				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    		<b id="vestName">Vestibular</b>
+		    		<span class="caret"></span>
+		    	</button>
+		  		<ul id="allVestsList" class="dropdown-menu" aria-labelledby="dropdownMenu2"></ul>
+			</div>
 		</div>
 		<h4>Topics: </h4>
   		<div class="form-group">
@@ -33,7 +42,7 @@
 		</div>
 		<div class="btn-group pull-right" role="group" aria-label="...">
 		  <button type="button" style="margin-right:10px"class="btn btn-default">Cancel</button>
-		  <button type="button" class="btn btn-primary">Send Question</button>
+		  <button type="button" id="sendButton" class="btn btn-primary">Send Question</button>
 		</div>
   	</div>
 </div>

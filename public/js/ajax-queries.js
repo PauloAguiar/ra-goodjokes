@@ -57,6 +57,40 @@ function GetQuestionForm() {
       templates.redactorForm = ejs.compile(template);
       $('#tabs').hide();
       $('#content-view').empty().append(templates.redactorForm());
+      $.get('/tags', function (data) {
+        data.forEach(function(d) {
+            var html = '<li><a id="taglist' + d._id + '">' + d.name + '</a></li>';
+            $('#allTagsList').append(html);
+            document.getElementById('taglist' + d._id).addEventListener("click", function() {
+                    addUsedTag(d);
+              }, false);
+        });           
+      });
+      var vestIdSel;
+      $.get('/vestibulars', function (data) {
+        data.forEach(function(d) {
+            var html = '<li><a id="vestlist' + d._id + '">' + d.name + '</a></li>';
+            $('#allVestsList').append(html);
+            document.getElementById('vestlist' + d._id).addEventListener("click", function() {
+                    vestIdSel = d._id;
+                    document.getElementById('vestName').innerHTML = d.name;
+              }, false);
+        });           
+      });
+      document.getElementById('sendButton').addEventListener("click", function()  {
+            var send = {};
+            //send._vestibular = document.getElementById('vestName').innerHTML;
+            send._vestibular = vestIdSel;
+            send.title = document.getElementById('title').value;            
+            send.name = document.getElementById('name').value;
+            send.content = document.getElementById('summernote').value;
+            var childs = document.getElementById('usedTagsList').childNodes;
+            send._tags = [];
+            for (var i = 0; i < childs.length; i++) {              
+              send._tags.push(childs[i].id);   
+            }
+            $.post('/questions', send, function(resp,err) {}, 'json');
+          }, false);
       $('#summernote').summernote({
         height: 300,
       });

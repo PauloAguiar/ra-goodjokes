@@ -27,3 +27,8 @@ function formatTimeStamp(ts) {
 // Return the formatted string
   return date.join("/") + " " + time.join(":") + " " + suffix;
 }
+
+function addUsedTag(tag) {
+  var html = '<a id="' + tag._id + '" type="button" style="margin-bottom:5px" class="btn btn-primary btn-xs">' + tag.name + '</a>'
+  $('#usedTagsList').append(html);
+}
