@@ -27,6 +27,8 @@ module.exports = function (app) {
 	
 	//answer routes
 	app.delete('/answers/:answerId', answer.remove);
+    app.get   ('/answers/:answerId/upvote/:status',    answer.upvote);
+    app.get   ('/answers/:answerId/downvote/:status',  answer.downvote);
 	
 	//tag routes
 	app.get   ('/tags/:tagId/getName', tag.getName)
