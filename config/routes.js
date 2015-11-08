@@ -8,6 +8,7 @@ module.exports = function (app) {
 	app.get('/', function (req, res) {
 		res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
 	});
+<<<<<<< 5e4800e94c5250c61b83c71ef4a4d03733586ef4
 	
 	//users routes
 	app.param ('userId',         user.load);
@@ -35,6 +36,19 @@ module.exports = function (app) {
 
     app.get('/question_view', function (req, res) {
         res.render('question_view', {'title': 'Good Jokes Mate'});
+=======
+
+	app.get('/create_question', function (req, res) {
+  		res.render('create_question', {'title': 'Create question', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
+	});
+
+    app.get('/provas', function (req, res) {
+        res.render('provas', {'title': 'Create question', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
+    });
+
+    app.get('/statistics', function (req, res) {
+        res.render('statistics', {'title': 'Good Jokes Mate'});
+>>>>>>> Added view provas.
     });
 
     app.get('/questionsSample', function (req, res) {
@@ -110,12 +124,25 @@ module.exports = function (app) {
             ]);
     });
 
+
     app.get('/recentTagListSample', function (req, res) {
         res.json(
             [
                 {'text': 'ITA 2015', 'id': 'ita-2015'},
                 {'text': 'IME 2015', 'id': 'ime-2015'}
             ]);
+
+    app.get('/provaListSample', function (req, res) {
+        res.json({
+            'current_page': 0,
+            'total_pages': 2,
+            'list': [
+                {'text': 'ITA 2015', 'id': 'ita-2015', 'count': 2, 'date': 1446949866},
+                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
+                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
+                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
+                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0, 'date': 1446949866},
+            ]});
     });
 
 	app.param ('userId',        user.load);
