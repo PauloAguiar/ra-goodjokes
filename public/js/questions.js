@@ -1,11 +1,17 @@
-function getListedQuestions()
+function getListedQuestions(vestId)
 {
-    return $.get('/questionsSample/ita-2015', function (data) {
+    return $.get('/questionsSample/' + vestId, function (data) {
         $('#question-list').empty();
-        data.forEach(function(d)
+        if(data.length > 0)
         {
-          var html = templates.question({'question': d, 'formatDate': formatTimeStamp});
-          return $('#question-list').append(html);
-        });
+            data.forEach(function(d) {
+                var html = templates.question({'question': d});
+                $('#question-list').append(html);
+            });
+        }
+        else
+        {
+            return $('#question-list').append("nenhuma pergunta encontrada");
+        }
     });
 }
