@@ -28,6 +28,7 @@ questionSchema.methods = {
       this.downVotes += 1;
     else
       this.upVotes += 1;
+      cb(this)
   },
   
    removeVote : function (isDownvote, cb) {
