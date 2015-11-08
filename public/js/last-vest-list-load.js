@@ -10,7 +10,7 @@ $(document).ready(function() {
       $('#last-vest-list').append(html);
       data.forEach(function(item) {
           document.getElementById('questionvestlist' + item.id).addEventListener("click", function() {
-              GetListedQuestions(item);
+              GetListedQuestions('/questionsSample/' + item.tag);
           }, false);
       });
     });

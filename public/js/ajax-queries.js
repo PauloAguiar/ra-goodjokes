@@ -1,16 +1,22 @@
-function GetListedQuestions(vest)
+function GetListedQuestions(path)
 {
-    console.log("here")
-    return $.get('/questionsSample/' + vest.tag, function (data) {
+    return $.get(path, function (data) {
         $('#content-view').empty();
         $('#tabs').show();
         if(data.length > 0)
         {
             data.forEach(function(d) {
-                var html = templates.question({'question': d});                
+                var html = templates.question({'question': d});
                 $('#content-view').append(html);
-                document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
-                    getListedQuestions(d.vest);
+                if(d.vest !== undefined)
+                {
+                    document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
+                      GetListedQuestions('/questionsSample/'+ d.vest.tag);
+                    }, false);
+                }
+
+                document.getElementById('question-' + d.id).addEventListener("click", function() {
+                    GetQuestionView(d.id);
                 }, false);
             });
         }
@@ -43,14 +49,40 @@ function GetQuestionForm() {
   });
 }
 
+<<<<<<< HEAD
 function getListedTags(tagId) {
+=======
+function GetListedTags(tagId)
+{
+>>>>>>> b504a61dd90eb5d72c378f979bb2adfa6d24feea
     return $.get('/tags/' + tagId, function (data) {
         if(data.length > 0)
         {
             data.forEach(function(d) {
                 var html = templates.question({'question': d});
+                $('#tabs').show();
                 $('#content-view').empty().append(html);
             });
         }
     });
+}
+
+function GetQuestionView(questionId)
+{
+  $.get('/public/ejs/question-view.ejs', function (template) {
+    templates.questionView = ejs.compile(template);
+    $.get('/questionViewAnswerSample', function (data) {
+      var html = templates.questionView({'answerList': data});
+      $('#tabs').hide();
+      $('#content-view').empty().append(html);
+      $.get('/question/' + questionId, function (data) {
+        var title = (data.title);
+        var content = data.content;
+        var votes = data.votes;
+        $('#question-title-view').html(title); 
+        $('#question-content-view').html(content);
+        $('#question-votes-view').html(votes); 
+      });
+    });
+  });
 }
