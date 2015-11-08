@@ -42,9 +42,9 @@ exports.show = function (req, res) {
   var tagId = req.params.tagId;
 
   Tag.findById(tagId)
-    .deepPopulate('_questions._vestibular _questions._answers _questions._tags')
-    .exec(function(err, res) {
-        console.log(JSON.stringify(res));
+    .deepPopulate('_questions._vestibular _questions._answers _questions._tags _questions._creator')
+    .exec(function(err, result) {
+        return res.json(result);
     });
   // Tag.findById(tagId)
   //   .populate('_questions')

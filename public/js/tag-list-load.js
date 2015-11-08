@@ -8,7 +8,7 @@ $(document).ready(function() {
           var html = templates.recentTagsList({'recentTagsList': data});
           $('#recent-tags-list').append(html);
           data.forEach(function(item) {
-              document.getElementById(item._id).addEventListener("click", function() {
+              document.getElementById('recent-tag-' + item._id).addEventListener("click", function() {
                   GetListedQuestions('/tags/' + item._id);
               }, false);
       });

@@ -3,7 +3,7 @@
         <div class="col-xs-4 counters">
             <div class="answers">
                 <div class="question-counters">
-                    <%- question.answers %>
+                    <%- question._answers.length %>
                 </div>
                 <div class="question-counters-text">
                     respostas
@@ -11,7 +11,7 @@
             </div>
             <div class="views">
                 <div class="question-counters">
-                    <%- question.views %>
+                    <%- question.views === undefined ? 0 : question.views %>
                 </div>
                 <div class="question-counters-text">
                     visualizações
@@ -19,7 +19,7 @@
             </div>
             <div class="votes">
                 <div class="question-counters">
-                    <%- question.votes %>
+                    <%- question.upVotes + question.downVotes %>
                 </div>
                 <div class="question-counters-text">
                     votos
@@ -28,26 +28,26 @@
         </div>
         <div class="col-xs-8 summary">
             <div class="summary-text">
-                <% if(question.vest !== undefined) {%>
-                    <a href="#" id="<%-'questionvest' + question.vest.id%>" type="button" class="btn btn-primary btn-xs"><%- question.vest.name %></a>
+                <% if(question._vestibular !== undefined) {%>
+                    <a href="#" id="<%-'questionvest-' + question._vestibular._id %>" type="button" class="btn btn-primary btn-xs"><%- question._vestibular.name %></a>
                 <% } %>
-                <a id="question-<%- question.id %>" href="#"><%- question.text %></a>
+                <a id="question-<%- question._id %>" href="#"><%- question.title %></a>
             </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-6 tags">
                         <div class="pull-left">
-                            <% if($.isArray(question.tags)) { %>
-                                <% question.tags.forEach(function(tag) { %>
-                                    <a href="#" type="button" class="tag"><%- tag %></a>
+                            <% if($.isArray(question._tags)) { %>
+                                <% question._tags.forEach(function(tag) { %>
+                                    <a id="question-<%- question._id %>-tag-<%- tag._id %>" href="#" type="button" class="tag"><%- tag.name %></a>
                                 <% }); %>
                             <% } %>
                         </div>
                     </div>
                     <div class="col-xs-6 summary-user-info">
                         <div class="pull-right">
-                            <%- formatTimeStamp(question.date) %>
-                            <a href="#"><%- question.user %></a>
+                            <%- question.updated_at %>
+                            <a href="#"><%- question._creator.name %></a>
                         </div>
                     </div>
                 </div>

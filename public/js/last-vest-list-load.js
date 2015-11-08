@@ -9,8 +9,8 @@ $(document).ready(function() {
       var html = templates.lastVestList({'lastVestList': data});
       $('#last-vest-list').append(html);
       data.forEach(function(item) {
-          document.getElementById('questionvestlist' + item.id).addEventListener("click", function() {
-              GetListedQuestions('/questionsSample/' + item.tag);
+          document.getElementById('questionvestlist-' + item._id).addEventListener("click", function() {
+              GetListedQuestions('/vestibulars/' + item._id);
           }, false);
       });
     });
