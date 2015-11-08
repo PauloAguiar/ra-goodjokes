@@ -60,7 +60,7 @@ module.exports = function (app) {
                     'votes': 2,
                     'text': 'Good Jokes Mate',
                     'tags': ['good', 'jokes', 'mate'],
-                    'vest': ['ITA 2015'],
+                    'vest': {'name': 'ITA 2015', 'id': '1', 'tag': 'ita-2015'},
                     'date': 1446950406,
                     'user': 'alexandremuzio'
                 },
@@ -79,7 +79,7 @@ module.exports = function (app) {
                     'votes': 0,
                     'text': 'Good Jokes Mate 3',
                     'tags': ['real', 'funny'],
-                    'vest': ['ITA 2015'],
+                    'vest': {'name': 'ITA 2015', 'id': '2', 'tag': 'ita-2015'},
                     'date': 1446949866,
                     'user': 'mateus'
                 }
@@ -95,7 +95,7 @@ module.exports = function (app) {
                     'votes': 2,
                     'text': 'Good Jokes Mate',
                     'tags': ['good', 'jokes', 'mate'],
-                    'vest': ['ITA 2015'],
+                    'vest': {'name': 'ITA 2015', 'id': '1', 'tag': 'ita-2015'},
                     'date': 1446950406,
                     'user': 'alexandremuzio'
                 },
@@ -105,7 +105,7 @@ module.exports = function (app) {
                     'votes': 0,
                     'text': 'Good Jokes Mate 3',
                     'tags': ['real', 'funny'],
-                    'vest': ['ITA 2015'],
+                    'vest': {'name': 'ITA 2015', 'id': '2', 'tag': 'ita-2015'},
                     'date': 1446949866,
                     'user': 'mateus'
                 }
@@ -119,17 +119,37 @@ module.exports = function (app) {
     app.get('/lastVestListSample', function (req, res) {
         res.json(
             [
-                {'text': 'ITA 2015', 'id': 'ita-2015', 'count': 2},
-                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0}
+                {'text': 'ITA 2015', 'tag': 'ita-2015', 'id': '1', 'count': 2},
+                {'text': 'IME 2015', 'tag': 'ime-2015', 'id': '2', 'count': 0}
             ]);
     });
 
+<<<<<<< bba2d4375d0e96a8c35c1cf5bd1e32cb41b37e67
 
     app.get('/recentTagListSample', function (req, res) {
+=======
+    app.get('/tags/ita', function (req,res) {
+>>>>>>> Filtering by tags
         res.json(
             [
-                {'text': 'ITA 2015', 'id': 'ita-2015'},
-                {'text': 'IME 2015', 'id': 'ime-2015'}
+                {
+                    'answers': 0,
+                    'views': 550,
+                    'votes': 2,
+                    'text': 'Good Jokes Mate',
+                    'tags': ['good', 'jokes', 'mate'],
+                    'vest': {'name': 'ITA 2015', 'id': '1', 'tag': 'ita-2015'},
+                    'date': 1446950406,
+                    'user': 'alexandremuzio'
+                }
+            ]);
+    });
+
+    app.get('/recentTagsListSample', function (req, res) {
+        res.json(
+            [
+                {'text': 'good', 'id': 'ita'},
+                {'text': 'jokes', 'id': 'jokes'}
             ]);
     app.get('/questionViewSample', function (req, res) {
         res.json(
