@@ -23,10 +23,11 @@ function GetListedQuestions(path)
 
             for (tag in d._tags)
             {
-              console.log('question-' + d._id + '-tag-' + d._tags[tag]._id);
-              document.getElementById('question-' + d._id + '-tag-' + d._tags[tag]._id).addEventListener("click", function() {
-                GetListedQuestions('/tags/' + d._tags[tag]);
-              }, false);
+              var tagId = d._tags[tag]._id;
+              document.getElementById('question-' + d._id + '-tag-' + tagId).addEventListener("click", function() {
+                var myId = tagId;
+                return function () { GetListedQuestions('/tags/' + myId); };
+              }(), false);
               //$.get('/tags/d._tags[tag]')
             }
           });
@@ -66,18 +67,14 @@ function GetQuestionView(questionId)
 {
   $.get('/public/ejs/question-view.ejs', function (template) {
     templates.questionView = ejs.compile(template);
-    $.get('/questionViewAnswerSample', function (data) {
-      var html = templates.questionView({'answerList': data});
+    $.get('/questions/' + questionId, function (data) {
+      console.log(JSON.stringify(data));
+      var html = templates.questionView({'answer': data._answers});
       $('#tabs').hide();
       $('#content-view').empty().append(html);
-      $.get('/question/' + questionId, function (data) {
-        var title = (data.title);
-        var content = data.content;
-        var votes = data.votes;
-        $('#question-title-view').html(title); 
-        $('#question-content-view').html(content);
-        $('#question-votes-view').html(votes); 
-      });
+      $('#question-title-view').html(data.title); 
+      $('#question-content-view').html(data.content);
+      //$('#question-votes-view').html(votes); 
     });
   });
 }

@@ -79,7 +79,7 @@ exports.show = function (req, res) {
   var qId = req.params.questionId;
   
     return Question.findOne({ _id : qId })
-        .populate('_creator', 'id name')
+        .deepPopulate('_creator _answers _tags _vestibular')
         .exec(function(err, q) {          
           if (err)
             return res.error({'msg': 'error_on_save_answer'});

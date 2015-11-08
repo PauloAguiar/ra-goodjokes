@@ -6,6 +6,8 @@
 var mongoose = require('mongoose');
 var Vestibular = mongoose.model('Vestibular');
 var Question  = mongoose.model('Question');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
+
 /**
  * Load
  */
@@ -44,8 +46,9 @@ exports.show = function (req, res) {
   var vestibularId = req.params.vestibularId;
   
     Question.find({"_vestibular" : vestibularId})
+    .deepPopulate('_vestibular _answers _tags _creator')
     .exec(function (err, results) {
-      res.json(results);
+      res.json({'_questions': results });
     });
 };
 

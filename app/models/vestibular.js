@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 autoIncrement.initialize(mongoose.connection);
 
@@ -20,6 +21,7 @@ vestibularSchema.statics = {
   }
 };
 
+vestibularSchema.plugin(deepPopulate, {});
 vestibularSchema.plugin(autoIncrement.plugin, 'Vestibular');
 var Vestibular = mongoose.model('Vestibular', vestibularSchema);
 
