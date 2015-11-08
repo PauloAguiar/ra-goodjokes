@@ -1,19 +1,18 @@
 var express = require('express');
 var database = require('./app/services/database.js');
+var fs = require('fs');
+var join = require('path').join;
 
 var app = express();
 var port = 3000;
 
 database.connect();
 
-require('./config/express')(app);
+fs.readdirSync(join(__dirname, 'app/models')).forEach(function (file) {
+  if (~file.indexOf('.js')) require(join(__dirname, 'app/models', file));
+});
 
-app.get('/', function (req, res) {
-  res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
-});
-app.get('/create_question', function (req, res) {
-  res.render('create_question', {'title': 'Create question', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
-});
+require('./config/express')(app);
 require('./config/routes')(app);
 
 app.listen(port);

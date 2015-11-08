@@ -21,6 +21,7 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "jquery": "~2.1.4",
-    "summernote": "~0.6.16"
+    "summernote": "~0.6.16",
+    "d3": "~3.5.6"
   }
 }
