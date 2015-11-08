@@ -65,7 +65,6 @@ function GetQuestionForm() {
       });
       document.getElementById('sendButton').addEventListener("click", function()  {
             var send = {};
-            //send._vestibular = document.getElementById('vestName').innerHTML;
             send._vestibular = vestIdSel;
             send.title = document.getElementById('title').value;            
             send.name = document.getElementById('name').value;
