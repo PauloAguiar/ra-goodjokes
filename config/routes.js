@@ -81,6 +81,12 @@ module.exports = function (app) {
             ]);
     });
 
+
+    app.get('/question_view', function (req, res) {
+        res.render('question_view', {'title': 'Good Jokes Mate'});
+    });
+
+
 	app.param ('userId',        user.load);
 	app.get   ('/users/:id',    user.show);
 	app.get   ('/users/create', user.create);
