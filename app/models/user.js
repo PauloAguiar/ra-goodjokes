@@ -11,6 +11,18 @@ var userSchema = new Schema({
 	updated_at: { type: Date, default: Date.now }
 });
 
+
+userSchema.statics = {
+  load: function (options, cb) {
+    options.select = options.select || 'name username';
+    this.findOne(options.criteria)
+      .select(options.select)
+      .exec(cb);
+  }
+}
+
+
+
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
