@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 autoIncrement.initialize(mongoose.connection);
 
@@ -52,6 +53,7 @@ questionSchema.statics = {
   }
 };
 
+questionSchema.plugin(deepPopulate, {});
 questionSchema.plugin(autoIncrement.plugin, 'Question');
 
 questionSchema.statics = {
