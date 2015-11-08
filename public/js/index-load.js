@@ -20,7 +20,7 @@ function getQuestions() {
   return $.get('/questionsSample', function (data) {
     data.forEach(function(d)
     {
-      var html = templates.question({'question': d, 'formatDate': formatTimeStamp});
+      var html = templates.question({'question': d});
       return $('#question-list').append(html); 
     });
   });
@@ -29,7 +29,12 @@ function getQuestions() {
 function getLastVestList() {
   return $.get('/lastVestListSample', function (data) {
       var html = templates.lastVestList({'lastVestList': data});
-      return $('#last-vest-list').append(html); 
+      $('#last-vest-list').append(html); 
+      data.forEach(function(item) {
+          document.getElementById(item.id).addEventListener("click", function() {
+              getListedQuestions(item.id);
+          }, false);
+      });
   });
 }
 
