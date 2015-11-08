@@ -1,29 +1,14 @@
 <!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <HTML>
    <% include partials/header %>
-
 <BODY>
-	<% include partials/navbar %>
-	
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational
-                website. It includes a large callout called a jumbotron and three
-                supporting pieces of content. Use it as a starting point to create
-                something more unique.</p>
-            <p>
-                <a class="btn btn-primary btn-lg" role="button">Learn more
-                    &raquo;</a>
-            </p>
-        </div>
-    </div>
+    <script src="public/js/index-load.js"></script>
+    <script src="public/js/questions.js"></script>
+    <% include partials/navbar %>
 
     <div class="container">
         <% include partials/content %>
-        <hr>
-        <% include partials/footer %>
-    </div>    
+    </div>
+    <% include partials/footer %>
 </BODY>
 </HTML>
