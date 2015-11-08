@@ -1,0 +1,53 @@
+<div class="container-fluid maix-box-container">
+    <div class="main-box no-header clearfix">
+        <div class="main-box-body clearfix">
+            <div class="table-responsive">
+                <table class="table provas-list">
+                    <thead>
+                        <tr>
+                            <th><span>Vestibular</span></th>
+                            <th class="text-center"><span>Perguntas</span></th>
+                            <th class="text-center"><span>Data</span></th>
+                        </tr>
+                    </thead>
+                    <% provaData.list.forEach(function(prova) { %>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <!--img src="http://bootdey.com/img/Content/user_1.jpg" alt=""-->
+                                <a href="#" class="user-link"><%- prova.text %></a>
+                            </td>
+                            <td class="text-center">
+                                <h4><span class="label label-primary"><%- prova.count %></span></h4>
+                            </td>
+                            <td class="text-center"><%- formatTimeStamp(prova.date) %></td>
+                        </tr>
+                    </tbody>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bs-example text-center">
+    <ul class="pagination">
+        <% if(provaData.current_page === 0) { %>
+            <li class="disabled"><a href="#">&laquo;</a></li>
+        <% } else { %>
+            <li><a href="#">&laquo;</a></li>
+        <% } %>
+        <% for (var i = 0; i < provaData.total_pages; i++) { %>
+            <% if(provaData.current_page === i) { %>
+                <li class="active"><a href="#"><%= i + 1 %></a></li>
+            <% } else { %>
+                <li><a href="#"><%= i + 1 %></a></li>
+            <% } %>
+        <% } %>
+        <% if(provaData.current_page === provaData.total_pages - 1) { %>
+            <li class="disabled"><a href="#">&raquo;</a></li>
+        <% } else { %>
+            <li><a href="#">&raquo;</a></li>
+        <% } %>
+    </ul>
+</div>
