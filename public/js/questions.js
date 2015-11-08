@@ -1,12 +1,12 @@
-function getListedQuestions(vest)
+function GetListedQuestions(vest)
 {
     return $.get('/questionsSample/' + vest.tag, function (data) {
-        $('#question-list').empty();
+        $('#content-view').empty();
         if(data.length > 0)
         {
             data.forEach(function(d) {
-                var html = templates.question({'question': d});
-                $('#question-list').append(html);
+                var html = templates.question({'question': d});                
+                $('#content-view').append(html);
                 document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
                     getListedQuestions(d.vest);
                 }, false);
@@ -14,7 +14,17 @@ function getListedQuestions(vest)
         }
         else
         {
-            return $('#question-list').append("nenhuma pergunta encontrada");
+            return $('#content-view').append("<center>Nenhuma pergunta encontrada.</center>");
         }
     });
+}
+
+function GetProvasList() {
+  $.get('/public/ejs/prova-list.ejs', function (template) {
+      templates.provaList = ejs.compile(template);
+      $.get('/provaListSample', function (data) {
+        var html = templates.provaList({'provaData': data});
+        return $('#content-view').empty().append(html);
+      });
+  });
 }
