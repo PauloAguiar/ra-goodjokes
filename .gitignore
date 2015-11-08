@@ -29,3 +29,6 @@ bower_components/
 
 # Database
 data/db
+
+# Visual Studio Code
+.vscode/
