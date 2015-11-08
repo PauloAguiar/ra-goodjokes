@@ -52,19 +52,21 @@ function GetQuestionForm() {
               }, false);
         });           
       });
+      var vestIdSel;
       $.get('/vestibulars', function (data) {
-        console.log(data);
         data.forEach(function(d) {
             var html = '<li><a id="vestlist' + d._id + '">' + d.name + '</a></li>';
             $('#allVestsList').append(html);
             document.getElementById('vestlist' + d._id).addEventListener("click", function() {
-                    document.getElementById('dropdownMenu2').innerHTML = d.name + ' <span class="caret"></span>';
+                    vestIdSel = d._id;
+                    document.getElementById('vestName').innerHTML = d.name;
               }, false);
         });           
       });
       document.getElementById('sendButton').addEventListener("click", function()  {
             var send = {};
-            send._vestibular = 5;
+            //send._vestibular = document.getElementById('vestName').innerHTML;
+            send._vestibular = vestIdSel;
             send.title = document.getElementById('title').value;            
             send.name = document.getElementById('name').value;
             send.content = document.getElementById('summernote').value;
