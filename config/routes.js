@@ -90,6 +90,28 @@ module.exports = function (app) {
             ]);
     });
 
+
+    app.get('/questionViewSample', function (req, res) {
+        res.json(
+            
+                {'title': 'ITA 2015 DB', 'content': 'blablabla blablabla blablabla do DBblablabla blablabla blablabla do DB', 'votes': 5, 'id': 'suga'}
+            );
+    });
+
+    app.get('/questionViewAnswerSample', function (req, res) {
+        res.json(
+            [
+                {'title': 'ITA 2015 DB', 'content': 'blablabla blablabla blablabla do DBblablabla blablabla blablabla do DB', 'votes': 5, 'id': 'suga1'},
+                {'title': 'ITA 2015 DB', 'content': '2blablabla blablabla blablabla do DBblablabla blablabla blablabla do DB', 'votes': 4 , 'id': 'suga2'},
+                {'title': 'ITA 2015 DB', 'content': '2blablabla blablabla blablabla do DBblablabla blablabla blablabla do DB', 'votes': 3 , 'id': 'suga3'}
+            ]);
+    });
+
+    app.get('/question_view', function (req, res) {
+        res.render('question_view', {'title': 'Good Jokes Mate'});
+    });
+
+
     app.get('/provaListSample', function (req, res) {
         res.json({
             'current_page': 0,
