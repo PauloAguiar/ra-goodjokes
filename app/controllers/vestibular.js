@@ -67,6 +67,7 @@ exports.recent = function (req, res) {
     .limit(10)
     .sort('-updated_at')
     .exec(function (err, results) {
-      res.json(results);
+      console.log(JSON.stringify(results));
+      return res.json(results);
     });
 };

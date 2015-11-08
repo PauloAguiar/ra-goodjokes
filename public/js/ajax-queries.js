@@ -5,27 +5,30 @@ function GetListedQuestions(path)
         console.log(data);
         $('#content-view').empty();
         $('#tabs').show();
-        if(data._questions.length > 0)
+        if($.isArray(data._questions) && data._questions.length > 0)
         {
           data._questions.forEach(function(d) {
-              var html = templates.question({'question': d});
-              $('#content-view').append(html);
-              if(d._vestibular !== undefined)
-              {
-                  document.getElementById('questionvest-' + d._vestibular).addEventListener("click", function() {
-                    GetListedQuestions('/questionsSample/'+ d._vestibular);
-                  }, false);
-              }
-
-              document.getElementById('question-' + d._id).addEventListener("click", function() {
-                  GetQuestionView(d._id);
-              }, false);
-              for (tag in d._tags)
-              {
-                document.getElementById('question-' + d._id + '-tag-' + d._tags[tag]).addEventListener("click", function() {
-                  GetListedQuestions('/tags/' + d._tags[tag]);
+            var html = templates.question({'question': d});
+            $('#content-view').append(html);
+            if(d._vestibular !== undefined)
+            {
+                document.getElementById('questionvest-' + d._vestibular._id).addEventListener("click", function() {
+                  GetListedQuestions('/questionsSample/'+ d._vestibular._id);
                 }, false);
-              }
+            }
+
+            document.getElementById('question-' + d._id).addEventListener("click", function() {
+                GetQuestionView(d._id);
+            }, false);
+
+            for (tag in d._tags)
+            {
+              console.log('question-' + d._id + '-tag-' + d._tags[tag]._id);
+              document.getElementById('question-' + d._id + '-tag-' + d._tags[tag]._id).addEventListener("click", function() {
+                GetListedQuestions('/tags/' + d._tags[tag]);
+              }, false);
+              //$.get('/tags/d._tags[tag]')
+            }
           });
         }
         else

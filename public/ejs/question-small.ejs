@@ -28,8 +28,8 @@
         </div>
         <div class="col-xs-8 summary">
             <div class="summary-text">
-                <% if(question.vest !== undefined) {%>
-                    <a href="#" id="<%-'questionvest-' + question._vestibular %>" type="button" class="btn btn-primary btn-xs"><%- question._vestibular %></a>
+                <% if(question._vestibular !== undefined) {%>
+                    <a href="#" id="<%-'questionvest-' + question._vestibular._id %>" type="button" class="btn btn-primary btn-xs"><%- question._vestibular.name %></a>
                 <% } %>
                 <a id="question-<%- question._id %>" href="#"><%- question.title %></a>
             </div>
@@ -39,15 +39,15 @@
                         <div class="pull-left">
                             <% if($.isArray(question._tags)) { %>
                                 <% question._tags.forEach(function(tag) { %>
-                                    <a id="question-<%- question._id %>-tag-<%- tag %>" href="#" type="button" class="tag"><%- tag %></a>
+                                    <a id="question-<%- question._id %>-tag-<%- tag._id %>" href="#" type="button" class="tag"><%- tag.name %></a>
                                 <% }); %>
                             <% } %>
                         </div>
                     </div>
                     <div class="col-xs-6 summary-user-info">
                         <div class="pull-right">
-                            <%- formatTimeStamp(question.updated_at) %>
-                            <a href="#"><%- question._creator %></a>
+                            <%- question.updated_at %>
+                            <a href="#"><%- question._creator.name %></a>
                         </div>
                     </div>
                 </div>
