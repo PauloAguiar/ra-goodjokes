@@ -6,7 +6,7 @@ function GetListedQuestions(vest)
         if(data.length > 0)
         {
             data.forEach(function(d) {
-                var html = templates.question({'question': d});                
+                var html = templates.question({'question': d});
                 $('#content-view').append(html);
                 document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
                     getListedQuestions(d.vest);
@@ -42,13 +42,14 @@ function GetQuestionForm() {
   });
 }
 
-function getListedTags(tagId)
+function GetListedTags(tagId)
 {
     return $.get('/tags/' + tagId, function (data) {
         if(data.length > 0)
         {
             data.forEach(function(d) {
                 var html = templates.question({'question': d});
+                $('#tabs').show();
                 $('#content-view').empty().append(html);
             });
         }

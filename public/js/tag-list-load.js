@@ -9,7 +9,7 @@ $(document).ready(function() {
         $('#recent-tags-list').append(html); 
         data.forEach(function(item) {
             document.getElementById(item.id).addEventListener("click", function() {
-                getListedTags(item.id);
+                GetListedTags(item.id);
             }, false);
       });
   });

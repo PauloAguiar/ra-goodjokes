@@ -1,4 +1,4 @@
-function getListedTags(tagId)
+function GetListedTags(tagId)
 {
     return $.get('/tags/' + tagId, function (data) {
         if(data.length > 0)
