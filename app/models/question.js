@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment');
+var deepPopulate = require('mongoose-deep-populate')(mongoose);
 
 autoIncrement.initialize(mongoose.connection);
 
@@ -8,7 +9,7 @@ var questionSchema = new Schema({
 	_creator: { type: Number, ref: 'User'},
 	_answers: [{ type : Number, ref: 'Answer' }],
 	_tags: [{ type: Number, ref: 'Tag' }],
-	_vestibular: { type: Number, ref: 'Vestibular' },
+	_vestibular: { type: Number, ref: 'Vestibular', default: -1 },
   	title: String,
   	content: String,
   	upVotes: { type: Number, default: 0 },
@@ -52,6 +53,7 @@ questionSchema.statics = {
   }
 };
 
+questionSchema.plugin(deepPopulate, {});
 questionSchema.plugin(autoIncrement.plugin, 'Question');
 
 questionSchema.statics = {

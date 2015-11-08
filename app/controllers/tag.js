@@ -64,6 +64,16 @@ exports.show = function (req, res) {
   // });
 };
 
+exports.getName = function (req, res) {
+  var tagId = req.params.tagId;
+  
+  Tag.findById(tagId)
+    .select('name')
+    .exec(function (err, results) {
+      res.json(results);
+    });
+};
+
 exports.recent = function (req, res) {
   Tag.find({})
     .populate('_questions')
