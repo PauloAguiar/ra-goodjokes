@@ -73,3 +73,19 @@
 .question-list-tab-panel {
     padding-bottom: 10px;
 }
+
+.row.question-show{
+    border-top: 1px dotted #CCCCCE;
+    padding: 20px;
+    padding-top: 5px;
+}
+
+#panel-question{
+    padding-top: 50px;
+}
+
+.container-fluid.panel-question-answer-line{
+   border-top: 1px dotted #CCCCCE;
+    padding: 20px;
+    padding-top: 5px;   
+}
