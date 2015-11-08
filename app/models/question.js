@@ -16,6 +16,19 @@ var questionSchema = new Schema({
   	updated_at: { type: Date, default: Date.now }
 });
 
+questionSchema.statics = {
+	
+  getUserNamesById: function (questionList, callback) {
+  	for (index = 0; index < questionList.length; ++index) {
+  		questionList[index].populate('_creator', 'name').exec(function (err, question) {
+	  		if (err) return handleError(err);
+	  		question.user = { "user": question._creator, "id": question._creator.id };
+	  });
+  	}
+  	callback(questionList);
+  }
+};
+
 questionSchema.plugin(autoIncrement.plugin, 'Question');
 var Question = mongoose.model('Question', questionSchema);
 

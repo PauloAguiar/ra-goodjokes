@@ -16,7 +16,7 @@ module.exports = function (app) {
 	//question routes
 	// app.param ('questionId',      			    question.load);
 	// app.get   ('/questions/:questionId',        question.show);
-	// app.get   ('/questions/search/:query',      question.list);
+	app.get   ('/questions/search',             question.list);
 	app.post  ('/questions'            ,        question.save);
 	app.post  ('/questions/:questionId/answer', question.answer);
 	//app.delete('/questions/:questionId',        question.delete);

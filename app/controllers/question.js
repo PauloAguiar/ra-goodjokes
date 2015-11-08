@@ -67,11 +67,13 @@ exports.show = function (req, res) {
  */
 
 exports.list = function (req, res) {
-  var question = req.profile;
-  res.render('question/show', {
-    title: question.name,
-    question: question
-  });
+  var query = req.query.q;
+  Question.find(
+    { "title": { "$regex": query, "$options": "i" } })
+      .populate( '_creator', 'id name')
+      .exec(function (err, results) {
+        res.json(results);
+      });
 };
 
 /**
