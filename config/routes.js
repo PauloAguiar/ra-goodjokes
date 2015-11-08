@@ -6,7 +6,7 @@ var answer = require('../app/controllers/answer.js');
 
 module.exports = function (app) {
 	app.get('/', function (req, res) {
-		res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
+		res.render('index', {'title': 'ENEMoverflow', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
 	});
 	
 	//users routes
