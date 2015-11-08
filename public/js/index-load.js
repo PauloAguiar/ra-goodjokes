@@ -14,6 +14,11 @@ function getTemplates() {
         templates.lastVestList = ejs.compile(template);
         return getLastVestList();
     });
+
+    $.get('/views/partials/recent-tags-list.ejs', function (template) {
+        templates.recentTagsList = ejs.compile(template);
+        return getRecentTagsList();
+    });
 }
 
 function getQuestions() {
@@ -21,7 +26,12 @@ function getQuestions() {
     data.forEach(function(d)
     {
       var html = templates.question({'question': d});
-      return $('#question-list').append(html); 
+      $('#question-list').append(html);
+      if (d.vest !== undefined) {
+        document.getElementById('questionvest' + d.vest.id).addEventListener("click", function() {
+                getListedQuestions(d.vest);
+            }, false);
+      } 
     });
   });
 }
@@ -31,8 +41,20 @@ function getLastVestList() {
       var html = templates.lastVestList({'lastVestList': data});
       $('#last-vest-list').append(html); 
       data.forEach(function(item) {
+          document.getElementById('questionvestlist' + item.id).addEventListener("click", function() {
+              getListedQuestions(item);
+          }, false);
+      });
+  });
+}
+
+function getRecentTagsList() {
+  return $.get('/recentTagsListSample', function (data) {
+      var html = templates.recentTagsList({'recentTagsList': data});
+      $('#recent-tags-list').append(html); 
+      data.forEach(function(item) {
           document.getElementById(item.id).addEventListener("click", function() {
-              getListedQuestions(item.id);
+              getListedTags(item.id);
           }, false);
       });
   });

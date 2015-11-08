@@ -29,7 +29,7 @@
         <div class="col-xs-8 summary">
             <div class="summary-text">
                 <% if(question.vest !== undefined) {%>
-                    <a href="#" type="button" class="btn btn-primary btn-xs"><%- question.vest %></a>
+                    <a href="#" id="<%-'questionvest' + question.vest.id%>" type="button" class="btn btn-primary btn-xs"><%- question.vest.name %></a>
                 <% } %>
                 <a href="#"><%- question.text %></a>
             </div>

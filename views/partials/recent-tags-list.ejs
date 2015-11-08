@@ -3,7 +3,7 @@
 </div>
 
 <div class="btn-toolbar" role="toolbar" aria-label="...">
-	<% recentTagListSample.forEach(function(item) { %>
-	   <a href="#" type="button" style="margin-bottom:5px" class="btn btn-primary btn-xs"><%= item.text %></a>
+	<% recentTagsList.forEach(function(item) { %>
+	   <a href="#" id="<%- item.id %>" type="button" style="margin-bottom:5px" class="btn btn-primary btn-xs"><%- item.text %></a>
 	<% }); %>
 </div>

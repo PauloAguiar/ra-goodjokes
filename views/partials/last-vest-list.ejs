@@ -3,8 +3,8 @@
 </div>
 
 <div class="list-group">
-    <% lastVestList.forEach(function(item) { %>]
-        <a href="#" id="<%- item.id %>" class="list-group-item"><span class="badge"><%- item.count %></span><%- item.text %></a>]
+    <% lastVestList.forEach(function(item) { %>
+       <a href="#" id="<%-'questionvestlist' + item.id %>" class="list-group-item"><span class="badge"><%- item.count %></span><%- item.text %></a>
     <% }); %>
 </div>
 
