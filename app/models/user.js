@@ -19,8 +19,7 @@ userSchema.statics = {
       .select(options.select)
       .exec(cb);
   }
-}
-
+};
 
 
 var User = mongoose.model('User', userSchema);

@@ -4,7 +4,7 @@
  */
 
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var Question = mongoose.model('Question');
 
 /**
  * Load
@@ -14,39 +14,40 @@ exports.load = function (req, res, next, id) {
   var options = {
     criteria: { _id : id }
   };
-  User.load(options, function (err, user) {
+  Question.load(options, function (err, question) {
     if (err) return next(err);
-    if (!user) return next(new Error('Failed to load User ' + id));
-    req.profile = user;
+    if (!question) return next(new Error('Failed to load Question ' + id));
+    req.profile = question;
     next();
   });
 };
 
-/**
- * Create user
- */
-
-exports.save = function (req, res) {
-  var user = new User(req.body);
-  console.log(user);
-  user.save(function (err) {
-    if (err) {
-      return res.render('index', {'title': 'Good Jokes Mate', 'tags': ['good', 'jokes', 'mate', 'oi', 'tudo', 'bem', 'la', '123412', 'olaaa']});
-    }
-  });
-};
 
 /**
- *  Show profile
+ *  Show question
  */
 
 exports.show = function (req, res) {
-  var user = req.profile;
-  res.render('users/show', {
-    title: user.name,
-    user: user
+  var question = req.profile;
+  res.render('question/show', {
+    title: question.name,
+    question: question
   });
 };
+
+
+/**
+ *  List questions
+ */
+
+exports.list = function (req, res) {
+  var question = req.profile;
+  res.render('question/show', {
+    title: question.name,
+    question: question
+  });
+};
+
 
 exports.signin = function (req, res) {};
 
@@ -61,7 +62,7 @@ exports.authCallback = login;
  */
 
 exports.login = function (req, res) {
-  res.render('users/login', {
+  res.render('question/login', {
     title: 'Login'
   });
 };
@@ -71,9 +72,9 @@ exports.login = function (req, res) {
  */
 
 exports.signup = function (req, res) {
-  res.render('users/signup', {
+  res.render('question/signup', {
     title: 'Sign up',
-    user: new User()
+    question: new Question()
   });
 };
 
