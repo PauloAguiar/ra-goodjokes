@@ -30,6 +30,7 @@ body {
 }
 
 .caret.caret-search {
+
     height: 20px;   
     border-top: 7px solid black; 
 }
@@ -41,6 +42,7 @@ body {
     #adv-search {
         /*width: 200px;*/
         margin: 0 auto;
+        padding-top: 50px;
     }
     .dropdown.dropdown-lg {
         position: static !important;
