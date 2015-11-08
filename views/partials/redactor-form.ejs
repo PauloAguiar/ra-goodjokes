@@ -1,0 +1,37 @@
+<h2>Ask a question!</h2>
+
+<div class="row">
+  	<div class="col-xs-6 col-md-1">
+    	<a href="#" class="thumbnail">
+      	<img src="http://img.informer.com/icons/png/32/45/45874.png">
+    	</a>
+  	</div>
+  	<div class="col-xs-6 col-md-11">
+  		<h4>Your question:</h4>  		
+  		<div class="form-group">
+  			<input type="text" class="form-control" placeholder="Type your question here..." aria-describedby="basic-addon1">
+		</div>
+		<% include redactor.ejs %>
+		<h4>Select a space for your question: </h4>
+		<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	    		Dropdown
+	    		<span class="caret"></span>
+	    	</button>
+	  		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    	<li><a href="#">Action</a></li>
+		    	<li><a href="#">Another action</a></li>
+		    	<li><a href="#">Something else here</a></li>
+		    	<li><a href="#">Separated link</a></li>
+		  	</ul>
+		</div>
+		<h4>Topics: </h4>  		
+  		<div class="form-group">
+  			<input type="text" class="form-control" placeholder="Bla Bla Bla..." aria-describedby="basic-addon1">
+		</div>
+		<div class="btn-group pull-right" role="group" aria-label="...">		  
+		  <button type="button" style="margin-right:10px"class="btn btn-default">Cancel</button>
+		  <button type="button" class="btn btn-primary">Send Question</button>
+		</div>	
+  	</div>  	  
+</div>
