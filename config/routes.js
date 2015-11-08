@@ -41,6 +41,7 @@ module.exports = function (app) {
         res.json(
             [
                 {
+                    'id': 2,
                     'answers': 0,
                     'views': 550,
                     'votes': 2,
@@ -51,6 +52,7 @@ module.exports = function (app) {
                     'user': 'alexandremuzio'
                 },
                 {
+                    'id': 3,
                     'answers': 11,
                     'views': 2000,
                     'votes': 0,
@@ -60,6 +62,7 @@ module.exports = function (app) {
                     'user': 'johngarden'
                 },
                 {
+                    'id': 4,
                     'answers': 11,
                     'views': 2000,
                     'votes': 0,
@@ -76,6 +79,7 @@ module.exports = function (app) {
         res.json(
             [
                 {
+                    'id': 2,
                     'answers': 0,
                     'views': 550,
                     'votes': 2,
@@ -86,6 +90,7 @@ module.exports = function (app) {
                     'user': 'alexandremuzio'
                 },
                 {
+                    'id': 3,
                     'answers': 11,
                     'views': 2000,
                     'votes': 0,
@@ -114,6 +119,7 @@ module.exports = function (app) {
         res.json(
             [
                 {
+                    'id': 4,
                     'answers': 0,
                     'views': 550,
                     'votes': 2,
@@ -134,7 +140,7 @@ module.exports = function (app) {
             ]);
     });
     
-    app.get('/questionViewSample', function (req, res) {
+    app.get('/question/2', function (req, res) {
         res.json(
             
                 {'title': 'ITA 2015 DB', 'content': 'blablabla blablabla blablabla do DBblablabla blablabla blablabla do DB', 'votes': 5, 'id': 'suga'}
