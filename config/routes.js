@@ -1,7 +1,7 @@
 var user = require('../app/controllers/user.js');
 var question = require('../app/controllers/question.js');
 var tag = require('../app/controllers/tag.js');
-var vestibular = require('../vestibular/controllers/vestibular.js');
+var vestibular = require('../app/controllers/vestibular.js');
 
 module.exports = function (app) {
 	app.get('/', function (req, res) {
@@ -14,10 +14,10 @@ module.exports = function (app) {
 	app.post  ('/users',         user.save);
 	
 	//question routes
-	app.param ('questionId',      			    question.load);
-	app.get   ('/questions/:questionId',        question.show);
-	app.get   ('/questions/search/:query',      question.list);
-	app.post  ('/questions'            ,        question.save);
+	// app.param ('questionId',      			    question.load);
+	// app.get   ('/questions/:questionId',        question.show);
+	// app.get   ('/questions/search/:query',      question.list);
+	// app.post  ('/questions'            ,        question.save);
 	app.post  ('/questions/:questionId/answer', question.answer);
 	//app.delete('/questions/:questionId',        question.delete);
 	

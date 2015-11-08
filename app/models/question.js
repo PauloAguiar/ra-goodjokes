@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var autoIncrement = require('mongoose-auto-increment');
+
+autoIncrement.initialize(mongoose.connection);
 
 var questionSchema = new Schema({
 	_creator: { type: Schema.Types.ObjectId, ref: 'User'},
@@ -13,7 +16,7 @@ var questionSchema = new Schema({
   	updated_at: { type: Date, default: Date.now }
 });
 
-
+questionSchema.plugin(autoIncrement.plugin, 'Question');
 var Question = mongoose.model('Question', questionSchema);
 
 module.exports = Question;

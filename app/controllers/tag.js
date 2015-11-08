@@ -6,6 +6,8 @@
 var mongoose = require('mongoose');
 var Tag = mongoose.model('Tag');
 
+exports.show = function() {}
+
 
 
 

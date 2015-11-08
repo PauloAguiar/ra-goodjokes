@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var autoIncrement = require('mongoose-auto-increment');
 
+autoIncrement.initialize(mongoose.connection);
+
 var userSchema = new Schema({
 	name: { type: String, required: true, unique: true },
 	username: { type: String, required: true, unique: true },
@@ -22,7 +24,7 @@ userSchema.statics = {
   }
 };
 
-
+userSchema.plugin(autoIncrement.plugin, 'User');
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
