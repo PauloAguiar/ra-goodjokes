@@ -27,10 +27,10 @@ module.exports = function (app) {
 	
 	//tag routes
 	app.post  ('/tags', tag.save);
-	app.get   ('/tags/:tagName', tag.show);
+	app.get   ('/tags/:tagId', tag.show);
 
 	//vestibular routes
 	app.post  ('/vestibulars', vestibular.save);
-	app.get   ('/vestibulars/:vestibularName', vestibular.show);
+	app.get   ('/vestibulars/:vestibularId', vestibular.show);
 
 };

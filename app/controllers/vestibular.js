@@ -5,7 +5,7 @@
 
 var mongoose = require('mongoose');
 var Vestibular = mongoose.model('Vestibular');
-
+var Question  = mongoose.model('Question');
 /**
  * Load
  */
@@ -37,13 +37,24 @@ exports.save = function (req, res) {
 };
 
 /**
- *  Show profile
+ *  Show
  */
 
 exports.show = function (req, res) {
-  var vestibular = req.profile;
-  res.render('vestibulars/show', {
-    title: vestibular.name,
-    vestibular: vestibular
-  });
+  var vestibularId = req.params.vestibularId;
+  
+    Question.find({"_vestibular" : vestibularId})
+    .exec(function (err, results) {
+      res.json(results);
+    });
+  
+ 
+  // Vesibular.findOne({name: vestibularName})
+  //   .exec(function(err, v) {
+      
+  //       Question.find({"_vestibular" : vestibularId})
+  //     .exec(function (err, results) {
+  //       res.json(results);
+  //     });
+  //   })
 };

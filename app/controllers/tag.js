@@ -40,11 +40,12 @@ exports.save = function (req, res) {
 exports.show = function (req, res) {
   var tagId = req.params.tagId;
   
-  Question.find({'_tags' : {$ne :tagId}})
+  Tag.findById(tagId)
+    .populate('_questions')
     .exec(function (err, results) {
       res.json(results);
     });
-  
+
   // res.render('tags/show', {
   //   title: tag.name,
   //   tag: tag
