@@ -26,8 +26,8 @@ module.exports = function (app) {
 	app.delete('/answers/:answerId', answer.remove);
 	
 	//tag routes
-    app.get   ('/tags', tag.recent); //most recent
     app.get   ('/tags/:tagId', tag.show);
+    app.get   ('/tags', tag.recent); //most recent
 	app.post  ('/tags', tag.save);
 
 	//vestibular routes
