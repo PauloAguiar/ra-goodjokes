@@ -54,11 +54,18 @@ exports.save = function (req, res) {
  */
 
 exports.show = function (req, res) {
-  var question = req.profile;
-  res.render('question/show', {
-    title: question.name,
-    question: question
-  });
+  var qId = req.params.questionId;
+  
+    return Question.findOne({ _id : qId })
+        .populate('_creator', 'id name')
+        .exec(function(err, q) {
+       return res.json(q);
+    });
+    
+  // res.render('question/show', {
+  //   title: question.name,
+  //   question: question
+  // });
 };
 
 

@@ -30,6 +30,14 @@ questionSchema.statics = {
 };
 
 questionSchema.plugin(autoIncrement.plugin, 'Question');
+
+questionSchema.statics = {
+  load: function (options, cb) {
+    this.findOne(options.criteria)
+      .exec(cb);
+  }
+};
+
 var Question = mongoose.model('Question', questionSchema);
 
 module.exports = Question;
