@@ -4,38 +4,18 @@
             <div class="row">
                 <% include question_list_tabs %>
             </div>
-            <div class="row">
-                <% include question_small %>
-            </div>
-            <div class="row">
-                <% include question_small %>
+            <div id="question-list">
             </div>
         </div>
     </div>
 
     <div class="col-md-4">
+        <div class="ask-button">
+            <button type="button" class="btn btn-primary btn-md btn-block">Perguntar</button>
+        </div>
 
-        <% include searchbar %>  
-        <% include last %>        
+        <% include searchbar %>
+        <div id="last-vest-list"></div>
         <% include tags %>
-
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce
-            dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-            fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-
-        mollis euismod. Donec sed odio dui.</p>
-        <p>
-            <a class="btn btn-default" href="#" role="button">View details
-            &raquo;</a>
-        </p>
-
-
-
-            mollis euismod. Donec sed odio dui.</p>
-        <p>
-            <a class="btn btn-default" href="#" role="button">View details
-                &raquo;</a>
-        </p>
     </div>
 </div>

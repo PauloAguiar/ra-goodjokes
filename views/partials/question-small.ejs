@@ -1,9 +1,9 @@
-<div onclick="console.log("Hello World!");" class="container-fluid small-question">
+<div class="container-fluid small-question">
     <div class="row">
         <div class="col-xs-4 counters">
             <div class="answers">
                 <div class="question-counters">
-                    322
+                    <%- question.answers %>
                 </div>
                 <div class="question-counters-text">
                     respostas
@@ -11,7 +11,7 @@
             </div>
             <div class="views">
                 <div class="question-counters">
-                    322
+                    <%- question.views %>
                 </div>
                 <div class="question-counters-text">
                     visualizações
@@ -19,7 +19,7 @@
             </div>
             <div class="votes">
                 <div class="question-counters">
-                    322
+                    <%- question.votes %>
                 </div>
                 <div class="question-counters-text">
                     votos
@@ -28,32 +28,26 @@
         </div>
         <div class="col-xs-8 summary">
             <div class="summary-text">
-                <a href="#">Good Jokes Mate Real Funny</a>
+                <% if(question.vest !== undefined) {%>
+                    <a href="#" type="button" class="btn btn-primary btn-xs"><%- question.vest %></a>
+                <% } %>
+                <a href="#"><%- question.text %></a>
             </div>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xs-6 tags">
                         <div class="pull-left">
-                            <a class="tag" href="#">joke</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a>
-                            <a class="tag" href="#">css</a> 
+                            <% if($.isArray(question.tags)) { %>
+                                <% question.tags.forEach(function(tag) { %>
+                                    <a href="#" type="button" class="tag"><%- tag %></a>
+                                <% }); %>
+                            <% } %>
                         </div>
                     </div>
                     <div class="col-xs-6 summary-user-info">
                         <div class="pull-right">
-                            08 Aug '14, 12:10 
-                            <a href="#">alexandremuzio</a>
+                            <%- formatDate(question.date) %>
+                            <a href="#"><%- question.user %></a>
                         </div>
                     </div>
                 </div>

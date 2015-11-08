@@ -1,3 +1,7 @@
+body {
+    padding-top: 50px;
+}
+
 .small-question {
     border-top: 1px dotted #CCCCCE;
     padding: 20px;
@@ -16,21 +20,21 @@
 }
 
 .votes {
-    float: left;
+    float: right;
     padding: 4px;
     margin-bottom: 8px;
     text-align: center;
 }
 
 .views {
-    float: left;
+    float: right;
     padding: 4px;
     margin-bottom: 8px;
     text-align: center;
 }
 
 .answers {
-    float: left;
+    float: right;
     padding: 4px;
     margin-bottom: 8px;
     text-align: center;
@@ -72,4 +76,13 @@
 
 .question-list-tab-panel {
     padding-bottom: 10px;
+}
+
+.footer-border {
+    padding-top: 5px;
+    border-top: 1px dotted #CCCCCE;
+}
+
+.ask-button {
+    padding-top: 10px;
 }
