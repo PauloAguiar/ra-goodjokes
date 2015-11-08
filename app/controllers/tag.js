@@ -68,4 +68,11 @@ exports.recent = function (req, res) {
     });
 };
 
+exports.all = function (req, res) {
+  Tag.find({})
+    .exec(function (err, results) {
+      res.json(results);
+    });
+};
+
 
