@@ -33,4 +33,16 @@ module.exports = function (app) {
 	app.post  ('/vestibulars', vestibular.save);
 	app.get   ('/vestibulars/:vestibularId', vestibular.show);
 
+    app.get('/question_view', function (req, res) {
+        res.render('question_view', {'title': 'Good Jokes Mate'});
+    });
+
+
+	app.param ('userId',        user.load);
+	app.get   ('/users/:id',    user.show);
+	app.get   ('/users/create', user.create);
+	// app.get   ('/users/edit',   user.edit);
+	// app.post  ('/users',        user.save);
+	// app.put   ('/users/:id',    user.update);
+	// app.delete('/users/:id',    user.remove);
 };

@@ -16,21 +16,21 @@
 }
 
 .votes {
-    float: right;
+    float: left;
     padding: 4px;
     margin-bottom: 8px;
     text-align: center;
 }
 
 .views {
-    float: right;
+    float: left;
     padding: 4px;
     margin-bottom: 8px;
     text-align: center;
 }
 
 .answers {
-    float: right;
+    float: left;
     padding: 4px;
     margin-bottom: 8px;
     text-align: center;
@@ -74,7 +74,18 @@
     padding-bottom: 10px;
 }
 
-.footer-border {
-    padding-top: 5px;
+.row.question-show{
     border-top: 1px dotted #CCCCCE;
+    padding: 20px;
+    padding-top: 5px;
+}
+
+#panel-question{
+    padding-top: 50px;
+}
+
+.container-fluid.panel-question-answer-line{
+   border-top: 1px dotted #CCCCCE;
+    padding: 20px;
+    padding-top: 5px;   
 }
