@@ -73,11 +73,15 @@ module.exports = function (app) {
             ]);
     });
 
+    app.get('/questionsSample/ime-2015', function (req, res) {
+        res.json([]);
+    });
+
     app.get('/lastVestListSample', function (req, res) {
         res.json(
             [
-                {'text': 'ITA 2015', 'id': 'ita-2015', 'count': 24},
-                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 2}
+                {'text': 'ITA 2015', 'id': 'ita-2015', 'count': 2},
+                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 0}
             ]);
     });
 
