@@ -52,9 +52,18 @@ function GetQuestionForm() {
               }, false);
         });           
       });
+      $.get('/vestibulars', function (data) {
+        data.forEach(function(d) {
+            var html = '<li><a id="vestlist' + d._id + '">' + d.name + '</a></li>';
+            $('#allVestsList').append(html);
+            document.getElementById('vestlist' + d._id).addEventListener("click", function() {
+                    document.getElementById(dropdownMenu2).value = d.name;
+              }, false);
+        });           
+      });
       document.getElementById('sendButton').addEventListener("click", function()  {
             var send = {};
-            send._vestibular = 4;
+            send._vestibular = 5;
             send.title = document.getElementById('title').value;            
             send.name = document.getElementById('name').value;
             send.content = document.getElementById('summernote').value;
@@ -63,10 +72,7 @@ function GetQuestionForm() {
             for (var i = 0; i < childs.length; i++) {              
               send._tags.push(childs[i].id);   
             }
-            console.log(send);
-            $.post('/questions', send, function(err,resp) {
-              console.log(resp);
-            });
+            $.post('/questions', send, function(resp,err) {}, 'json');
           }, false);
       $('#summernote').summernote({
         height: 300,
