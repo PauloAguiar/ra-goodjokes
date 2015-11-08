@@ -11,7 +11,8 @@ var questionSchema = new Schema({
 	_vestibular: { type: Number, ref: 'Vestibular' },
   	title: String,
   	content: String,
-  	votes: Number,
+  	upVotes: Number,
+    downVotes: Number,
   	created_at: { type: Date, default: Date.now },
   	updated_at: { type: Date, default: Date.now }
 });
