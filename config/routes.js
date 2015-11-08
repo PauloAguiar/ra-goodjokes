@@ -98,6 +98,13 @@ module.exports = function (app) {
             ]);
     });
 
+    app.get('/lastVestListSample', function (req, res) {
+        res.json(
+            [
+                {'text': 'ITA 2015', 'id': 'ita-2015', 'count': 24},
+                {'text': 'IME 2015', 'id': 'ime-2015', 'count': 2}
+            ]);
+    });
 
 	app.param ('userId',        user.load);
 	app.get   ('/users/:id',    user.show);

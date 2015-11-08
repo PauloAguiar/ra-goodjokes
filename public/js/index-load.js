@@ -9,6 +9,11 @@ function getTemplates() {
         templates.question = ejs.compile(template);
         return getQuestions();
     });
+
+    $.get('/views/partials/last-vest-list.ejs', function (template) {
+        templates.lastVestList = ejs.compile(template);
+        return getLastVestList();
+    });
 }
 
 function getQuestions() {
@@ -18,6 +23,13 @@ function getQuestions() {
       var html = templates.question({'question': d, 'formatDate': formatTimeStamp});
       return $('#question-list').append(html); 
     });
+  });
+}
+
+function getLastVestList() {
+  return $.get('/lastVestListSample', function (data) {
+      var html = templates.lastVestList({'lastVestList': data});
+      return $('#last-vest-list').append(html); 
   });
 }
 
