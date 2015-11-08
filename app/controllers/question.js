@@ -161,6 +161,6 @@ exports.default = function (req, res) {
     .limit(10)
     .exec(function(err, results) {
         console.log(results);
-        return res.json(results);
+        return res.json({"_questions" : results});
     });
 };
