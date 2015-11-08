@@ -4,6 +4,6 @@ if(templates === undefined) {
 $(document).ready(function() {
     $.get('/public/ejs/question-small.ejs', function (template) {
         templates.question = ejs.compile(template);
-        GetListedQuestions('/questionsSample');
+        GetListedQuestions('/questions');
     });
 });
