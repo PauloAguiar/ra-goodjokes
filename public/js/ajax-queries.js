@@ -49,12 +49,8 @@ function GetQuestionForm() {
   });
 }
 
-<<<<<<< HEAD
-function getListedTags(tagId) {
-=======
 function GetListedTags(tagId)
 {
->>>>>>> b504a61dd90eb5d72c378f979bb2adfa6d24feea
     return $.get('/tags/' + tagId, function (data) {
         if(data.length > 0)
         {
