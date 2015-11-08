@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 function getTemplates() {
 
-    $.get('/views/partials/question-view-answer-list.ejs', function (template) {
+    $.get('/public/ejs/question-view-answer-list.ejs', function (template) {
         templates.answerList = ejs.compile(template);
         return getQuestionViewAnswer();
     });
